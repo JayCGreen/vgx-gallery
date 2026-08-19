@@ -7,11 +7,21 @@
 	"name": "vgx-gallery",
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2025-10-08",
-	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".open-next/assets"
 	},
+	"d1_databases": [
+		{
+			"binding": "vgx_feed",
+			"database_name": "vgx-feed",
+			"database_id": "aa8abf23-ab31-4d7d-8284-872ee22d5b33"
+		}
+	],
 	"observability": {
 		"enabled": true
 	},
