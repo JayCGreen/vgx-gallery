@@ -9,12 +9,12 @@ export default async function GalleryGrid() {
       async function grab() {
         const result = await getCloudflareContext().env.
             vgx_feed.prepare(
-                "SELECT * FROM Tags",
+                "SELECT * FROM Tags"
             ).run()
         return new Response(JSON.stringify(result));
     }
     console.log("Testing, testing")
-    console.log("Hye look", grab())
+    grab().then((el)=>console.log("see me after class"))
     return (<>
 
     </>)
