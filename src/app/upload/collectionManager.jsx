@@ -4,13 +4,14 @@
  */
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import AddCollectionButton from "./addCollectionButton";
+import {getCollections} from "../actions"
 
 export default async function CollectionManager(){
     //var collections = await getCloudflareContext({async: true}).env.vgx_feed.prepare("SELECT * FROM Collections").run()
-    var collections = {results: []};
+    var collections = await getCollections();
     return (<div className="groupDataInput">
         <select>
-            {collections.results.map((el)=>(
+            {collections.map((el)=>(
                 <option key={el.collectionName}>{el.collectionDisplay}</option>
             ))}
         </select>

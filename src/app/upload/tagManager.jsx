@@ -4,14 +4,14 @@
  */
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import AddTag from "./addTagButton"
+import {getTags} from "../actions"
 
 export default async function TagManager(){
-    //var tags = await getCloudflareContext().env.vgx_feed.prepare("SELECT * FROM Tags").run();
-    var tags = {results: []};
-    console.log("yoooo", tags)
+    var tags = await getTags();
+    console.log(tags)
     return (<div className="groupDataInput">
         <select multiple>
-            {tags.results.map((el)=>(
+            {tags.map((el)=>(
                 <option key={el.tagName}>{el.tagDisplay}</option>
             ))}
 

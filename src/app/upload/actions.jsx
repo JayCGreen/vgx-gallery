@@ -3,6 +3,7 @@
 
 import {getCloudflareContext} from "@opennextjs/cloudflare";
 
+
 export async function addTag(formData){
     var res = await getCloudflareContext().env.vgx_feed.prepare("INSERT INTO Tags (tagName, tagDisplay) VALUES (?, ?)").bind(formData.get("tagId"), formData.get("tagName")).run();
     //var res = await getCloudflareContext().env.vgx_feed.prepare("Select * from Tags").run();
