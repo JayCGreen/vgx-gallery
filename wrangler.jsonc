@@ -19,7 +19,8 @@
 		{
 			"binding": "vgx_feed",
 			"database_name": "vgx-feed",
-			"database_id": "aa8abf23-ab31-4d7d-8284-872ee22d5b33"
+			"database_id": "aa8abf23-ab31-4d7d-8284-872ee22d5b33",
+			"remote" : true
 		}
 	],
 	"observability": {

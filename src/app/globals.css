@@ -1,9 +1,8 @@
-@import "tailwindcss";
-
 body {
 	background: var(--background);
 	color: var(--foreground);
 	font-family: Arial, Helvetica, sans-serif;
+	height: 100vh;
 }
 
 .header{
@@ -14,4 +13,30 @@ body {
 	display: flex;
 	width: 100%;
 	justify-content:space-evenly;
+}
+
+.uploadInput{
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 2%;
+}
+.content{
+	height: 100%;
+}
+
+.uploadPage{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	flex-direction: column;
+}
+
+.uploadForm{
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 10%;
+	height: 100%;
+	align-self: center;
 }

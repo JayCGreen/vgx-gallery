@@ -8,9 +8,9 @@ export default async function GalleryGrid() {
     //TO-DO Handle filtering
       async function grab() {
         const result = await getCloudflareContext().env.
-            vgx_feed.prepare(
+            vgx_feed.exec(
                 "SELECT * FROM Tags"
-            ).run()
+            )
         return new Response(JSON.stringify(result));
     }
     console.log("Testing, testing")
