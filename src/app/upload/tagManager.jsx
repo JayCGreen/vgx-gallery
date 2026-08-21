@@ -3,7 +3,7 @@
  * @returns Input to select from existing Tags and a way to create new ones
  */
 import AddTag from "./addTagButton"
-import {getTags} from "../actions"
+import {getTags} from "./actions"
 
 export default async function TagManager(){
     var tags = await getTags();
