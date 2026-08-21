@@ -2,22 +2,34 @@
  * 
  * @returns Input to select from existing Tags and a way to create new ones
  */
-import AddTag from "./addTagButton"
+'use client'
+import AddTag from "./addTagButton";
+import { useState, useEffect } from "react"
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
-export default async function TagManager(){
+export default function TagManager() {
+    /*
     async function getTags(){
         var res = await process.env.vgx_feed.prepare("SELECT * FROM Tags").run();
         return res.results;
     }
+    */
+    const [tags, setTags] = useState([]);
+    useEffect(() => {
+        fetch("/actions/tags/").then((res) => res.json()).then((ans) => {
+            setTags(ans.tags)
+        });
+    }, [])
     return (<div className="groupDataInput">
         <select multiple>
-            {getTags().then((em) => em.map((el)=>(
-                <option key={el.tagName}>{el.tagDisplay}</option>
-            )))}
+            {
+                tags.map((el) => (
+                    <option key={el.tagName}>{el.tagDisplay}</option>
+                ))
+            }
 
         </select>
         <AddTag></AddTag>
     </div>)
-    
+
 }

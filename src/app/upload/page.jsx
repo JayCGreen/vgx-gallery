@@ -25,6 +25,8 @@ export default function Uploader() {
             label: "Description",
             id: "desc",
             type: "text",
+            style: {height: "2rem", width: "100%"},
+            textArea: true
         }
     ]
 
@@ -35,11 +37,12 @@ export default function Uploader() {
                 inputFields.map((el) => (
                     <div key={el.id} className="uploadInput">
                         <label htmlFor={el.id}>{el.label}</label>
-                        <input id={el.id} type={el.type}></input>
+                        {el.textArea ?  <textarea id={el.id} style={el.style}></textarea> : <input id={el.id} style={el.style} type={el.type}></input>}
                     </div>
                 ))
             }
             <TagManager></TagManager>
+            <CollectionManager></CollectionManager>
         </form>
         <TagModal></TagModal>
         <CollectionModal></CollectionModal>
