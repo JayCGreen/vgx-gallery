@@ -5,7 +5,7 @@
 import AddCollectionButton from "./addCollectionButton";
 import {getCollections} from "./actions"
 
-export default async function CollectionManager(){
+export default function CollectionManager(){
     //var collections = await getCloudflareContext({async: true}).env.vgx_feed.prepare("SELECT * FROM Collections").run()
 
     return (<div className="groupDataInput">

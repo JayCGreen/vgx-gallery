@@ -39,7 +39,6 @@ export default function Uploader() {
                 ))
             }
             <TagManager></TagManager>
-            <CollectionManager></CollectionManager>
         </form>
         <TagModal></TagModal>
         <CollectionModal></CollectionModal>

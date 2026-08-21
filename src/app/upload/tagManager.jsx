@@ -5,7 +5,7 @@
 import AddTag from "./addTagButton"
 import {getTags} from "./actions"
 
-export default function TagManager(){
+export default async function TagManager(){
     return (<div className="groupDataInput">
         <select multiple>
             {getTags().then((em) => em.map((el)=>(
