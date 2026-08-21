@@ -5,6 +5,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export default async function GalleryGrid() {
+    /*
     //TO-DO Handle filtering
       async function grab() {
         const result = await getCloudflareContext().env.
@@ -15,6 +16,7 @@ export default async function GalleryGrid() {
     }
     console.log("Testing, testing")
     grab().then((el)=>console.log("see me after class"))
+    */
     return (<>
 
     </>)
