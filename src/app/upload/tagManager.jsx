@@ -5,8 +5,9 @@
 import AddTag from "./addTagButton"
 import {getTags} from "./actions"
 
-export default async function TagManager(){
-    var tags = await getCloudflareContext(true).env.vgx_feed.prepare("SELECT * FROM Tags").run();
+export default async function TagManager({tags}){
+    //var tags = await getCloudflareContext(true).env.vgx_feed.prepare("SELECT * FROM Tags").run();
+    console.log("tags be ", tags)
     return (<></>);
     /*
     return (<div className="groupDataInput">

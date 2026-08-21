@@ -6,6 +6,7 @@ import TagManager from "./tagManager";
 import CollectionManager from "./collectionManager"
 import TagModal from "./tagModal";
 import CollectionModal from "./collectionModal";
+import {getTag} from "./actions"
 
 export default function Uploader() {
 
@@ -40,7 +41,7 @@ export default function Uploader() {
             }
             <TagManager></TagManager>
         </form>
-        <TagModal></TagModal>
+        <TagModal tags={getTag}></TagModal>
         <CollectionModal></CollectionModal>
 
         </div>
