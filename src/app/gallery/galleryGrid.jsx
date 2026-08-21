@@ -5,10 +5,10 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export default async function GalleryGrid() {
-    const {env} =  getCloudflareContext({async:true});
-    await env.vgx_feed.exec(
+    const {env} =  await getCloudflareContext({async:true});
+    const test = await env.vgx_feed.prepare(
                 "SELECT * FROM Tags"
-            )
+            ).run()
     /*
     //TO-DO Handle filtering
       async function grab() {
@@ -21,7 +21,7 @@ export default async function GalleryGrid() {
     console.log("Testing, testing")
     grab().then((el)=>console.log("see me after class"))
     */
-   console.log("blinded by te light")
+   console.log("blinded by te light", test)
     return (<>
 
     </>)
