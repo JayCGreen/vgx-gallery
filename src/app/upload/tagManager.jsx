@@ -2,7 +2,6 @@
  * 
  * @returns Input to select from existing Tags and a way to create new ones
  */
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 import AddTag from "./addTagButton"
 import {getTags} from "../actions"
 

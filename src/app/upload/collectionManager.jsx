@@ -2,7 +2,6 @@
  * 
  * @returns Input to select from existing COllections and a way to create new ones
  */
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 import AddCollectionButton from "./addCollectionButton";
 import {getCollections} from "../actions"
 
