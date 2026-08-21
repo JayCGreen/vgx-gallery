@@ -2,7 +2,6 @@
  * 
  * @returns Page that handles uploads to R2 as well as creations of new Tags and Collections
  */
-
 import TagManager from "./tagManager";
 import CollectionManager from "./collectionManager"
 import TagModal from "./tagModal";
