@@ -2,19 +2,12 @@
  * 
  * @returns Input to select from existing COllections and a way to create new ones
  */
-'use client'
 import AddCollectionButton from "./addCollectionButton";
-import {getCollections} from "./actions"
-import { useState, useEffect } from "react"
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
-export default function CollectionManager(){
-    //var collections = await getCloudflareContext({async: true}).env.vgx_feed.prepare("SELECT * FROM Collections").run()
-    const [collections, setCollections] = useState([]);
-    useEffect(() => {
-            fetch("/actions/collections/").then((res) => res.json()).then((ans) => {
-                setCollections(ans.collections)
-            });
-        }, [])
+export default async function CollectionManager(){
+    const {env} = await getCloudflareContext({async:true});
+    const collections = (await env.vgx_feed.prepare("SELECT * FROM Collections").run()).results
 
     return (<div className="groupDataInput">
         <select>
