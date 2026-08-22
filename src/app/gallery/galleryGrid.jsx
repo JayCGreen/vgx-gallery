@@ -22,11 +22,13 @@ export default async function GalleryGrid() {
             var uri;
             if(media.length > 0)
             {
+                /*
                 var mediaUrl = await env.vgx_r2?.get(media[0].r2Id);
                 uri = await mediaUrl.blob().then((b)=> URL.createObjectURL(b));
                 console.log(typeof(mediaUrl))
 
                 console.log("media url be", uri, post.postId, mediaUrl);
+                */
             }
             return (
                 <div key={`post${post.postId}`} className="gridPost">
