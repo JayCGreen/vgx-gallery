@@ -20,7 +20,8 @@ export async function addPost(formData) {
         //Check the key to see if it matches the passwork
         console.log("file formData looks like ", formData.get("postFile"))
         if (formData.get("postKey") == "X-Mas") {
-            const db = await getCloudflareContext().env.vgx_feed;
+            const {env} = await getCloudflareContext()
+            const db = env.vgx_feed;
             //Insert post into table
             var post = await db.prepare("INSERT INTO Post (title, desc, postDate) VALUES (?, ?, datetime('now','localtime')) RETURNING *")
                 .bind(
@@ -33,8 +34,9 @@ export async function addPost(formData) {
             if (formData.get("postFile")) {
                 console.log("Do I get something to work with in the media ", formData.get("postFile"))
                 //Insert file into R2
-                const r2 = await getCloudflareContext().env.vgx_r2;
-                var r2Upload = await r2.put(formData.get("postFile").name, formData.get("postFile").arrayBuffer())
+                const r2 = env.vgx_r2;
+                console.log("Post R2 log",  formData.get("postFile").name, formData.get("postFile"))
+                var r2Upload = await r2.put(formData.get("postFile").name, formData.get("postFile"))
                 //
                 var media = await db.prepare("INSERT INTO Media (r2Id, fileName, uploadDate, post) VALUES (?, ?, datetime('now', 'localtime'), ?)")
                     .bind(
@@ -42,6 +44,7 @@ export async function addPost(formData) {
                         formData.get("postFile").name,
                         postId
                     ).run();
+                console.log("End of the updload")
             }
             //Insert tag and collection relationships
             if (formData.get("postTags")) {
@@ -54,9 +57,10 @@ export async function addPost(formData) {
         }
         else {
             //Throw error
+            
         }
     }
     catch (e) {
-
+        console.log(e)
     }
 }

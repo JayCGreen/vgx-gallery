@@ -19,10 +19,14 @@ export default async function GalleryGrid() {
                 return el.post == post.postId
             })
             //Get the media Url
-            if(media)
+            var uri;
+            if(media.length > 0)
             {
-                var mediaUrl = await env.vgx_r2?.get(media.r2Id);
-                console.log(mediaUrl);
+                var mediaUrl = await env.vgx_r2?.get(media[0].r2Id);
+                uri = await mediaUrl.blob().then((b)=> URL.createObjectURL(b));
+                console.log(typeof(mediaUrl))
+
+                console.log("media url be", uri, post.postId, mediaUrl);
             }
             return (
                 <div key={`post${post.postId}`} className="gridPost">
@@ -32,6 +36,7 @@ export default async function GalleryGrid() {
                     <div className="postContent">
                         {post.desc}
                     </div>
+                    {uri ? <img src={uri}></img> : <></>}
                     
                 </div>
             )

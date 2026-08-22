@@ -64,6 +64,7 @@ select{
 	border: solid .1rem;
 	box-sizing:border-box;
 	padding: 2%;
+	height: 100%;
 }
 
 .galleryGrid{
