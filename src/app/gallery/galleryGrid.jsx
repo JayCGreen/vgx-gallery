@@ -5,24 +5,36 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export default async function GalleryGrid() {
-    const {env} =  await getCloudflareContext({async:true});
-    const test = await env.vgx_feed.prepare(
-                "SELECT * FROM Tags"
-            ).run()
-    /*
-    //TO-DO Handle filtering
-      async function grab() {
-        const result = await getCloudflareContext().env.
-            vgx_feed.exec(
-                "SELECT * FROM Tags"
-            )
-        return new Response(JSON.stringify(result));
-    }
-    console.log("Testing, testing")
-    grab().then((el)=>console.log("see me after class"))
-    */
-   console.log("blinded by te light", test)
-    return (<>
+    const { env } = await getCloudflareContext({ async: true });
+    const postList = (await env.vgx_feed.prepare(
+        "SELECT * FROM Post"
+    ).run()).results;
+    const mediaList = (await env.vgx_feed.prepare(
+        "SELECT * FROM Media"
+    ).run()).results;
 
-    </>)
+    return (<div className="galleryGrid">
+        {postList.map(async (post) => {
+            var media = mediaList.filter((el)=>{
+                return el.post == post.postId
+            })
+            //Get the media Url
+            if(media)
+            {
+                var mediaUrl = await env.vgx_r2?.get(media.r2Id);
+                console.log(mediaUrl);
+            }
+            return (
+                <div key={`post${post.postId}`} className="gridPost">
+                    <div className="postHeader">
+                        <h4>{post.title}</h4>
+                    </div>
+                    <div className="postContent">
+                        {post.desc}
+                    </div>
+                    
+                </div>
+            )
+        })}
+    </div>)
 }

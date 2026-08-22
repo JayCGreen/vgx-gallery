@@ -23,6 +23,14 @@
 			"remote" : true
 		}
 	],
+	
+	"r2_buckets": [
+		{
+			"binding": "vgx_r2",
+			"bucket_name": "vgx-r2",
+			"remote" : true
+		}
+	],
 	"observability": {
 		"enabled": true
 	},
