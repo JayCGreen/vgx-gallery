@@ -1,5 +1,5 @@
 
-import {ageVerified} from  "./actions"
+import {ageVerified, ageRejected} from  "./actions";
 
 export default function AgeGate() {
     var d = new Date();
@@ -22,7 +22,7 @@ export default function AgeGate() {
                 <h3>This is an adult website</h3>
                 <h4>{notice}</h4>
                 <button formAction={ageVerified}>I am 18 or older - Enter</button>
-                <button> I am under 18 - Exit</button>
+                <button formAction={ageRejected}> I am under 18 - Exit</button>
             </form>
         </div>
     )
