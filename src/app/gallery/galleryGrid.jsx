@@ -26,20 +26,10 @@ export default async function GalleryGrid() {
                 var mediaUrl = await env.vgx_r2?.get(media[0].r2Id);
                 var contentType = mediaUrl.httpMetadata.contentType;
                 uri = await mediaUrl.arrayBuffer();
-                
-
-                //console.log("media url be", uri, post.postId, mediaUrl);
             }
             return (
                 <div key={`post${post.postId}`} className="gridPost">
-                    
-                    {uri ? <img src={`data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`}></img> : <div className="postContent">
-                        {post.desc}
-                    </div>}
-                    <div className="postHeader">
-                        <h4>{post.title}</h4>
-                    </div>
-                    
+                    {uri ? <img src={`data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`}></img> :<></>}
                 </div>
             )
         })}

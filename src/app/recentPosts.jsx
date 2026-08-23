@@ -10,7 +10,7 @@ export default async function Recents() {
     ).run()).results;
 
     return (
-        <div>
+        <div className="recentPosts">
             <h3>Recent Posts</h3>
             <div className="recentGrid">
                 {postList.map(async (post) => {
