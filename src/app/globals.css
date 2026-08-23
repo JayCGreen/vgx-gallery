@@ -13,7 +13,9 @@ body {
 	width: 100%;
 	justify-content:space-evenly;
 	list-style: none;
+	padding:unset;
 }
+
 
 .uploadInput{
 	display: flex;
@@ -73,6 +75,22 @@ select{
 	gap: 0.5%;
 	width: 100%;
 }
-.galleryGrid{
+
+@media screen and (max-width: 600px) {
+  .galleryGrid{
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 0.5%;
+	width: 100%;
+}
+}
+
+.gridPost img{
 	height:100%;
+	object-fit:cover;
+	transition: ease 2s;
+}
+
+.gridPost img:hover{
+	object-fit:contain;
 }

@@ -24,9 +24,9 @@ export default async function GalleryGrid() {
             {
                 
                 var mediaUrl = await env.vgx_r2?.get(media[0].r2Id);
-                
+                var contentType = mediaUrl.httpMetadata.contentType;
                 uri = await mediaUrl.arrayBuffer();
-                console.log(typeof(uri))
+                
 
                 //console.log("media url be", uri, post.postId, mediaUrl);
             }
@@ -35,10 +35,10 @@ export default async function GalleryGrid() {
                     <div className="postHeader">
                         <h4>{post.title}</h4>
                     </div>
-                    <div className="postContent">
+                    <hr style={{width: "100%"}}/>
+                    {uri ? <img src={`data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`}></img> : <div className="postContent">
                         {post.desc}
-                    </div>
-                    {uri ? <img src={`data:image/png;base64, ${Buffer.from(uri).toString('base64')}`}></img> : <></>}
+                    </div>}
                     
                 </div>
             )
