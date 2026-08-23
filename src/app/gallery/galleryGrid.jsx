@@ -7,7 +7,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 export default async function GalleryGrid() {
     const { env } = await getCloudflareContext({ async: true });
     const postList = (await env.vgx_feed.prepare(
-        "SELECT * FROM Post"
+        "SELECT * FROM Post ORDER BY julianday(postDate) DESC"
     ).run()).results;
     const mediaList = (await env.vgx_feed.prepare(
         "SELECT * FROM Media"
@@ -32,16 +32,17 @@ export default async function GalleryGrid() {
             }
             return (
                 <div key={`post${post.postId}`} className="gridPost">
-                    <div className="postHeader">
-                        <h4>{post.title}</h4>
-                    </div>
-                    <hr style={{width: "100%"}}/>
+                    
                     {uri ? <img src={`data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`}></img> : <div className="postContent">
                         {post.desc}
                     </div>}
+                    <div className="postHeader">
+                        <h4>{post.title}</h4>
+                    </div>
                     
                 </div>
             )
         })}
-    </div>)
+        </div>)
 }
+

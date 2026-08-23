@@ -10,7 +10,7 @@ export default function AgeGate() {
     function verifyAge() {
         console.log("tripped")
         var d = new Date();
-        d.setTime(d.getTime() + (15) * 60 * 1000);
+        d.setTime(d.getTime() + (45) * 60 * 1000);
         var expires = "expires=" + d.toUTCString();
         document.cookie = "accessAge=2;expires" + expires;
 
