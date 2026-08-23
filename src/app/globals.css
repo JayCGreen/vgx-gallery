@@ -63,7 +63,7 @@ select{
 	flex-direction:column;
 	width: 100%;
 	aspect-ratio: 1/ 1;
-	border: solid .1rem;
+
 	box-sizing:border-box;
 	padding: 2%;
 	height:100%;
@@ -91,7 +91,7 @@ select{
 	transition: ease 2s;
 }
 
-.gridPost img:hover{
+.gridPost:hover img{
 	object-fit:contain;
 }
 
@@ -117,4 +117,14 @@ select{
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 	gap: 0.5%;
 	width: 100%;
+}
+
+.postHeader{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.postDesc{
+	text-overflow:ellipsis;
 }
