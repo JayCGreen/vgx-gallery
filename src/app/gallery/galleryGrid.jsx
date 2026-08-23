@@ -3,6 +3,7 @@
  * @returns A grid of the items listed in the gallery database
  */
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import GridComponent from "./gridComponent";
 
 export default async function GalleryGrid() {
     const { env } = await getCloudflareContext({ async: true });
@@ -13,26 +14,16 @@ export default async function GalleryGrid() {
         "SELECT * FROM Media"
     ).run()).results;
 
-    return (<div className="galleryGrid">
-        {postList.map(async (post) => {
-            var media = mediaList.filter((el)=>{
-                return el.post == post.postId
-            })
-            //Get the media Url
-            var uri;
-            if(media.length > 0)
-            {
-                
-                var mediaUrl = await env.vgx_r2?.get(media[0].r2Id);
-                var contentType = mediaUrl.httpMetadata.contentType;
-                uri = await mediaUrl.arrayBuffer();
-            }
-            return (
-                <div key={`post${post.postId}`} className="gridPost">
-                    {uri ? <img src={`data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`}></img> :<></>}
-                </div>
-            )
-        })}
+    const galleryItems = await Promise.all(mediaList.map(async (el) => {
+        var mediaUrl = await env.vgx_r2?.get(el.r2Id);
+        var contentType = mediaUrl.httpMetadata.contentType;
+        var uri = await mediaUrl.arrayBuffer();
+        var source = `data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`
+        return {...el, uri: source};
+    }))
+    return (
+        <div className="galleryGrid">
+            <GridComponent items={galleryItems}></GridComponent>
         </div>)
 }
 

@@ -1,5 +1,5 @@
-export default function Lightbox(){
-    return(<>
-    
-    </>)
+'use client'
+
+export default function Lightbox({items, index, setIndex}){
+    return(<></>)
 }
