@@ -38,9 +38,9 @@ export default async function Recents() {
                                 <h4>{post.title}</h4> <p>{post.postDate.split(" ")[0]}</p>
                             </div>
                             <hr  style={{width: "100%"}}/>
-                            <div className="postDesc">
-                                <h5>{post.desc}</h5>
-                            </div>
+                            <h5 className="postDesc">
+                                {post.desc}
+                            </h5>
                         </div>
                     )
                 })}

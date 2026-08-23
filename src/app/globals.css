@@ -4,20 +4,20 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.header{
-	width:100%;
+.header {
+	width: 100%;
 }
 
-.header ul{
+.header ul {
 	display: flex;
 	width: 100%;
-	justify-content:space-evenly;
+	justify-content: space-evenly;
 	list-style: none;
-	padding:unset;
+	padding: unset;
 }
 
 
-.uploadInput{
+.uploadInput {
 	display: flex;
 	flex-direction: column;
 	align-items: start;
@@ -25,21 +25,22 @@ body {
 	width: 100%;
 }
 
-.uploadInput input{
+.uploadInput input {
 	width: 100%;
 }
-.content{
+
+.content {
 	height: 100%;
 }
 
-.uploadPage{
+.uploadPage {
 	display: flex;
 	width: 100%;
 	align-items: center;
 	flex-direction: column;
 }
 
-.uploadForm{
+.uploadForm {
 	display: flex;
 	flex-direction: column;
 	align-items: start;
@@ -48,83 +49,93 @@ body {
 	align-self: center;
 }
 
-.groupDataInput{
+.groupDataInput {
 	display: flex;
 	gap: 5%;
 	width: 100%;
 }
 
-select{
+select {
 	width: 100%;
 }
 
-.gridPost{
+.gridPost {
 	display: flex;
-	flex-direction:column;
+	flex-direction: column;
 	width: 100%;
 	aspect-ratio: 1/ 1;
-
-	box-sizing:border-box;
+	box-sizing: border-box;
 	padding: 2%;
-	height:100%;
+	height: 100%;
 }
 
-.galleryGrid{
+.galleryGrid {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 	gap: 0.5%;
 	width: 100%;
 }
 
-@media screen and (max-width: 600px) {
-  .galleryGrid{
-	display: grid;
-	grid-template-columns: minmax(0, 1fr);
-	gap: 0.5%;
-	width: 100%;
-}
-}
-
-.gridPost img{
-	height:100%;
-	object-fit:cover;
+.gridPost img {
+	height: 100%;
+	object-fit: cover;
 	transition: ease 2s;
 }
 
-.gridPost:hover img{
-	object-fit:contain;
+.gridPost:hover img {
+	object-fit: contain;
 }
 
 .ageContainer {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 	width: 100%;
 	align-content: center;
 }
 
-.ageBlocker{
-	display:flex;
+.ageBlocker {
+	display: flex;
 	width: 50%;
-	flex-direction:column;
+	flex-direction: column;
 	border: solid .1rem;
 	padding: 2%;
 	gap: .5rem;
 	align-self: center;
 }
 
-.recentGrid{
+.recentGrid {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 	gap: 0.5%;
 	width: 100%;
 }
 
-.postHeader{
+.postHeader {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.postDesc{
-	text-overflow:ellipsis;
+.postDesc {
+	height:100%;
+	max-height: 2rem;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	text-wrap: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+	.galleryGrid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.5%;
+		width: 100%;
+	}
+
+	.postHeader {
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		align-items: start;
+	}
 }
