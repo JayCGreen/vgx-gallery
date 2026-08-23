@@ -1,14 +1,11 @@
 'use server'
+import {cookies} from 'next/headers'
 
-import {getCloudflareContext} from "@opennextjs/cloudflare";
-
-export async function getCollections(){
-    var res = await getCloudflareContext({async: true}).env.vgx_feed.prepare("SELECT * FROM Collections").run()
-    return res.results;
-}
-
-export async function getTags(){
-    var res = await getCloudflareContext({async: true}).env.vgx_feed.prepare("SELECT * FROM Tags").run();
-    return res.results;
+export async function ageVerified(){
+    var cookieJar = await cookies();
+    var d = new Date();
+    d.setTime(d.getTime() + (15)*60*1000);
+    var expires = d.toUTCString();
+    cookieJar.set("accessAge", 2, {expires: d})
 }
 
