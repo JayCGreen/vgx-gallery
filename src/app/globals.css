@@ -71,6 +71,7 @@ select {
 	background: none;
 	border: none;
 	text-decoration: none;
+	color:black;
 }
 
 .galleryGrid {
@@ -220,6 +221,10 @@ select {
 		justify-content: start;
 		align-items: start;
 
+	}
+
+	.postBlock{
+		flex-direction: column;
 	}
 
 }
