@@ -29,7 +29,7 @@ export default async function Recents() {
                         //console.log("media url be", uri, post.postId, mediaUrl);
                     }
                     return (
-                        <div key={`post${post.postId}`} className="gridPost">
+                        <a key={`post${post.postId}`} className="gridPost" href={`/p/${post.postId}`}>
                             
                             {uri ? <img src={`data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`}></img> : <div className="postContent">
                                 {post.desc}
@@ -41,7 +41,7 @@ export default async function Recents() {
                             <h5 className="postDesc">
                                 {post.desc}
                             </h5>
-                        </div>
+                        </a>
                     )
                 })}
             </div>
