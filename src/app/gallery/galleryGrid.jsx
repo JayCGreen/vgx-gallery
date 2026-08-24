@@ -11,7 +11,7 @@ export default async function GalleryGrid() {
         "SELECT * FROM Post ORDER BY julianday(postDate) DESC"
     ).run()).results;
     const mediaList = (await env.vgx_feed.prepare(
-        "SELECT * FROM Media"
+        "SELECT * FROM Media ORDER BY julianday(uploadDate) DESC"
     ).run()).results;
 
     const galleryItems = await Promise.all(mediaList.map(async (el) => {
