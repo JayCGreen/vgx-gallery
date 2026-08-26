@@ -108,7 +108,7 @@ select {
 	align-self: center;
 }
 
-.recentGrid {
+.postGrid {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 	gap: 0.5%;

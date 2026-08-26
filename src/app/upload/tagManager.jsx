@@ -11,10 +11,10 @@ export default async function TagManager() {
     const tags = (await env.vgx_feed.prepare("SELECT * FROM Tags").run()).results
 
     return (<div className="groupDataInput">
-        <select multiple>
+        <select name="postTags" multiple>
             {
                 tags.map((el) => (
-                    <option key={el.tagName}>{el.tagDisplay}</option>
+                    <option key={el.tagName} value={el.tagId}>{el.tagDisplay}</option>
                 ))
             }
 

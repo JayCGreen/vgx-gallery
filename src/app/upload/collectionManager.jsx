@@ -10,9 +10,9 @@ export default async function CollectionManager(){
     const collections = (await env.vgx_feed.prepare("SELECT * FROM Collections").run()).results
 
     return (<div className="groupDataInput">
-        <select>
+        <select name="postCollections">
             {collections.map((el)=>(
-                <option key={el.collectionName}>{el.collectionDisplay}</option>
+                <option key={el.collectionName} value={el.collectionId}>{el.collectionDisplay}</option>
             ))}
         </select>
         <AddCollectionButton></AddCollectionButton>
