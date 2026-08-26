@@ -2,7 +2,7 @@
 
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
-export default async function PostInfo({ postId }) {
+export default async function PostBlock({ postId }) {
     console.log("post is", postId)
     const { env } = await getCloudflareContext({ async: true });
     const post = (await env.vgx_feed.prepare(
@@ -22,10 +22,10 @@ export default async function PostInfo({ postId }) {
                 {post.desc}
             </div>}
         </div>
-        <div className="postData">
+        <div className="postInfo">
             <div className="postHeader">
-            <h2>{post[0].title}</h2>
-            <p>{post[0].postDate.split(" ")[0]}</p>
+                <h2>{post[0].title}</h2>
+                <p>{post[0].postDate.split(" ")[0]}</p>
             </div>
             <p>{post[0].desc}</p>
         </div>

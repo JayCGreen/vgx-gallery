@@ -1,10 +1,10 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import PostGrid from "./postGrid";
+import PostGrid from "../postGrid";
 
-export default async function Recents() {
+export default async function PostCat() {
     const { env } = await getCloudflareContext({ async: true });
     const postList = (await env.vgx_feed.prepare(
-        "SELECT * FROM Post ORDER BY julianday(postDate) DESC LIMIT 3"
+        "SELECT * FROM Post ORDER BY julianday(postDate) DESC"
     ).run()).results;
     const mediaList = (await env.vgx_feed.prepare(
         "SELECT * FROM Media"
@@ -24,13 +24,14 @@ export default async function Recents() {
             var uri = await mediaUrl.arrayBuffer();
             imgSource = `data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`;
         }
-        
-        return {...post, source: imgSource}
+
+        return { ...post, source: imgSource }
     }))
 
     return (
-        <div className="recentPosts">
-            <h3>Recent Updates</h3>
+        <div className="postPage">
+            <h3>Posts</h3>
             <PostGrid items={itemList}></PostGrid>
-        </div>)
+        </div>
+    )
 }
