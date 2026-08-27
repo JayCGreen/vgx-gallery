@@ -201,14 +201,14 @@ select {
 	width: 100%;
 }
 
-.gridPostContent,
+.postContent, .postContent img, .gridPostContent,
 .gridPostContent img {
 	max-width: 100%;
 	min-height: 0;
 	min-width: 0;
 }
 
-.gridPostContent {
+.postContent, .gridPostContent {
 	display: flex;
 	width: 100%;
 	justify-content: center;
@@ -216,7 +216,7 @@ select {
 
 }
 
-.gridPostContent img {
+.postContent img, .gridPostContent img {
 	max-height: 100%;
 }
 
