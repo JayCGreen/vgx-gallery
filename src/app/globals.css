@@ -59,7 +59,7 @@ select {
 	width: 100%;
 }
 
-.gridPost {
+.galleryItem, .gridPost{
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -81,13 +81,13 @@ select {
 	width: 100%;
 }
 
-.gridPost img {
+.galleryItem img {
 	height: 100%;
 	object-fit: cover;
 	transition: ease 2s;
 }
 
-.gridPost:hover img {
+.galleryItem:hover img {
 	object-fit: contain;
 }
 
@@ -114,16 +114,30 @@ select {
 	gap: 0.5%;
 	width: 100%;
 	padding: 0;
+	list-style: none;
 }
 
-.postHeader {
+.gridPostContainer{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	aspect-ratio: 1/ 1;
+	height: 100%;
+	background-color: #ffffe4;
+}
+
+.gridPost{
+	text-decoration: none;
+}
+
+.gridPostHeader {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
 }
 
-.postHeader h4 {
+.gridPostHeader h4 {
 	padding: 0;
 	margin: 0;
 }
@@ -187,14 +201,14 @@ select {
 	width: 100%;
 }
 
-.postContent,
-.postContent img {
+.gridPostContent,
+.gridPostContent img {
 	max-width: 100%;
 	min-height: 0;
 	min-width: 0;
 }
 
-.postContent {
+.gridPostContent {
 	display: flex;
 	width: 100%;
 	justify-content: center;
@@ -202,8 +216,13 @@ select {
 
 }
 
-.postContent img {
+.gridPostContent img {
 	max-height: 100%;
+}
+
+.gridPostDesc{
+	align-self: flex-start;
+	width: 100%;
 }
 
 .homeCollectionsList {
@@ -219,6 +238,11 @@ select {
 	width: 100%;
 	text-align: center;
 	
+}
+
+.collectionItem {
+	text-decoration:none;
+	color:black
 }
 
 @media screen and (max-width: 600px) {
@@ -238,7 +262,7 @@ select {
 	}
 
 
-	.postHeader {
+	.gridPostHeader {
 		display: flex;
 		flex-direction: column;
 		justify-content: start;

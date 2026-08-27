@@ -55,13 +55,14 @@ export async function addPost(formData) {
             }
             if (formData.get("postCollections")) {
                 console.log("Collection format is", formData.get("postCollections"))
-                //Prob want that multi deal here too
-                db.prepare("INSERT INTO CollectionPosts (post, collection) VALUES (?, ?)")
-                    .bind(
-                        postId,
-                        formData.get("postCollection")
-                    ).run();
-                    
+                formData.getAll("postCollections").forEach((el) => {
+                    db.prepare("INSERT INTO CollectionPosts (post, collection) VALUES (?, ?)")
+                        .bind(
+                            postId,
+                            el
+                        ).run();
+                })
+
             }
 
         }

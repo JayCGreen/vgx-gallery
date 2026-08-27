@@ -1,10 +1,12 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import PostGrid from "../postGrid";
 
-export default async function PostCat() {
+export default async function PostCat({searchParams}) {
+    const filters = (await searchParams);
+    console.log("filters be ", filters)
     const { env } = await getCloudflareContext({ async: true });
     const postList = (await env.vgx_feed.prepare(
-        "SELECT * FROM Post ORDER BY julianday(postDate) DESC"
+        filterPosts(filters)
     ).run()).results;
     const mediaList = (await env.vgx_feed.prepare(
         "SELECT * FROM Media"
@@ -34,4 +36,14 @@ export default async function PostCat() {
             <PostGrid items={itemList}></PostGrid>
         </div>
     )
+
+    function filterPosts(filter){
+        var query = "SELECT * FROM Post ";
+        if(filter?.c){
+            query+= `JOIN CollectionPosts ON CollectionPosts.post = Post.postId WHERE CollectionPosts.collection=${filter.c} `;
+        }
+        //something for the tags
+        query+= `ORDER BY julianday(Post.postDate) DESC`
+        return query;
+    }
 }

@@ -13,8 +13,8 @@ export default async function FeaturedCollections() {
     <h3>Collections</h3>
     <ul className="homeCollectionsList">
         {collections.map((el)=>(
-            <li key={`collection${el.collectionId}`}className="homeCollectionItem" >
-                <a>
+            <li key={`collection${el.collectionId}`}className="collectionItemContainer" >
+                <a href={`posts?c=${el.collectionId}`} className="collectionItem">
                     <h4 style={{textAlign: "center"}}>{el.collectionDisplay}</h4>
                 </a>
             </li>
