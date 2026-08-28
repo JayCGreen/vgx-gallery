@@ -1,6 +1,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import PostGrid from "../postGrid";
 
+
 export default async function PostCat({searchParams}) {
     const filters = (await searchParams);
     console.log("filters be ", filters)

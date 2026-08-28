@@ -4,7 +4,7 @@ import PostGrid from "./postGrid";
 export default async function Recents() {
     const { env } = await getCloudflareContext({ async: true });
     const postList = (await env.vgx_feed.prepare(
-        "SELECT * FROM Post ORDER BY julianday(postDate) DESC LIMIT 3"
+        "SELECT * FROM Post ORDER BY julianday(postDate) DESC LIMIT 4"
     ).run()).results;
     const mediaList = (await env.vgx_feed.prepare(
         "SELECT * FROM Media"

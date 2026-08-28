@@ -1,3 +1,5 @@
+
+/* General CSS*/
 body {
 	background: var(--background);
 	color: var(--foreground);
@@ -108,39 +110,6 @@ select {
 	align-self: center;
 }
 
-.postGrid {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-	gap: 0.5%;
-	width: 100%;
-	padding: 0;
-	list-style: none;
-}
-
-.gridPostContainer{
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	aspect-ratio: 1/ 1;
-	height: 100%;
-	background-color: #ffffe4;
-}
-
-.gridPost{
-	text-decoration: none;
-}
-
-.gridPostHeader {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-}
-
-.gridPostHeader h4 {
-	padding: 0;
-	margin: 0;
-}
 
 .postDesc {
 	height: 100%;
@@ -220,11 +189,6 @@ select {
 	max-height: 100%;
 }
 
-.gridPostDesc{
-	align-self: flex-start;
-	width: 100%;
-}
-
 .homeCollectionsList {
 	width: 100%;
 	padding:0;
@@ -251,23 +215,6 @@ select {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 0.5%;
 		width: 100%;
-	}
-
-	.postGrid {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-		gap: 0.5%;
-		width: 100%;
-		padding:0;
-	}
-
-
-	.gridPostHeader {
-		display: flex;
-		flex-direction: column;
-		justify-content: start;
-		align-items: start;
-
 	}
 
 	.postBlock {

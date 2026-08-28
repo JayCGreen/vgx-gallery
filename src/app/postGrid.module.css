@@ -1,0 +1,94 @@
+.postGrid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+	gap: 0.5%;
+	width: 100%;
+	padding: 0;
+	list-style: none;
+}
+
+.gridPostContainer{
+	display: flex;
+	width: 100%;
+	aspect-ratio: 1/ 1;
+	height: 100%;
+	background-color: #ffffe4;
+	box-shadow: 2px 2px 2px black;
+	transition: ease .2s;
+}
+
+.gridPostContainer:hover{
+	box-shadow: 4px 4px 2px black;
+}
+
+.gridPost{
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+    color: black;
+    padding: 3%;
+	height: 100%;
+	width:100%;
+	box-sizing:border-box;
+}
+
+.gridPost:hover{
+	cursor: pointer
+}
+
+.gridPostHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.gridPostHeader h4 {
+	padding: 0;
+	margin: 0;
+}
+
+.gridPostContent{
+	display:flex;
+	justify-content: center;
+	min-height: 0;
+	max-height: 100%;
+	min-width: 100%;
+	max-width:100%;
+}
+
+.postImage{
+	max-height: 100%;
+	max-width: 100%;
+	min-height: 0;
+	min-width: 0;
+	object-fit: contain;
+}
+
+.gridPostDesc{
+	align-self: flex-start;
+	width: 100%;
+}
+
+
+@media screen and (max-width: 600px) {
+	.postGrid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 2%;
+		width: 100%;
+		padding:0;
+	}
+
+	.gridPostHeader {
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		align-items: start;
+
+	}
+
+	.postBlock {
+		flex-direction: column;
+	}
+
+}
