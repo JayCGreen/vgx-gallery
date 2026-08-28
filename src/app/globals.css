@@ -18,79 +18,8 @@ body {
 	padding: unset;
 }
 
-
-.uploadInput {
-	display: flex;
-	flex-direction: column;
-	align-items: start;
-	gap: 2%;
-	width: 100%;
-}
-
-.uploadInput input {
-	width: 100%;
-}
-
 .content {
 	height: 100%;
-}
-
-.uploadPage {
-	display: flex;
-	width: 100%;
-	align-items: center;
-	flex-direction: column;
-}
-
-.uploadForm {
-	display: flex;
-	flex-direction: column;
-	align-items: start;
-	gap: 10%;
-	height: 100%;
-	align-self: center;
-}
-
-.groupDataInput {
-	display: flex;
-	gap: 5%;
-	width: 100%;
-}
-
-select {
-	width: 100%;
-}
-
-.galleryItem, .gridPost{
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	aspect-ratio: 1/ 1;
-	box-sizing: border-box;
-	padding: 2%;
-	height: 100%;
-	gap: 2%;
-	background: none;
-	border: none;
-	text-decoration: none;
-	color: black;
-}
-
-.galleryGrid {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-	gap: 0.5%;
-	width: 100%;
-}
-
-.galleryItem img {
-	height: 100%;
-	object-fit: cover;
-	transition: ease 2s;
-}
-
-.galleryItem:hover img {
-	object-fit: contain;
 }
 
 .ageContainer {
@@ -108,85 +37,6 @@ select {
 	padding: 2%;
 	gap: .5rem;
 	align-self: center;
-}
-
-
-.postDesc {
-	height: 100%;
-	max-height: 2rem;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	text-wrap: nowrap
-		/*text-wrap: wrap;*/
-}
-
-.lightbox {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	background-color: rgba(15, 15, 15, 75%);
-	align-items: center;
-	padding: 2%;
-	box-sizing: border-box;
-	justify-content: space-between;
-}
-
-.lightboxBody {
-	width: 100%;
-	height: min-content;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.lightboxControls {
-	width: 100%;
-	height: 100%;
-}
-
-.lightboxImg {
-	max-height: 100%;
-	max-width: 100%;
-	min-height: 0;
-	box-sizing: border-box;
-	padding: .5rem;
-}
-
-.postBlock {
-	display: flex;
-	height: 100%;
-	width: 100%;
-	justify-content: space-around;
-	gap: 5%;
-	padding: 2%;
-	box-sizing: border-box;
-}
-
-.postInfo {
-	width: 100%;
-}
-
-.postContent, .postContent img, .gridPostContent,
-.gridPostContent img {
-	max-width: 100%;
-	min-height: 0;
-	min-width: 0;
-}
-
-.postContent, .gridPostContent {
-	display: flex;
-	width: 100%;
-	justify-content: center;
-	max-height: 85vh;
-
-}
-
-.postContent img, .gridPostContent img {
-	max-height: 100%;
 }
 
 .homeCollectionsList {
@@ -209,16 +59,3 @@ select {
 	color:black
 }
 
-@media screen and (max-width: 600px) {
-	.galleryGrid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 0.5%;
-		width: 100%;
-	}
-
-	.postBlock {
-		flex-direction: column;
-	}
-
-}

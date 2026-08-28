@@ -1,6 +1,5 @@
-
-
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import style from "./post.module.css"
 
 export default async function PostBlock({ postId }) {
     console.log("post is", postId)
@@ -17,26 +16,23 @@ export default async function PostBlock({ postId }) {
     var uri;
     console.log("hey to", mediaList==false)
     if (mediaList.length > 0) {
-        console.log("checking the order", mediaList)
         var mediaUrl = await env.vgx_r2?.get(mediaList[0].r2Id);
         var contentType = mediaUrl?.httpMetadata.contentType;
         var uri = await mediaUrl.arrayBuffer();
     }
-    console.log("blank uri is...", uri, mediaList)
-    console.log("Post tags is ", tagList)
-    return (<div className="postBlock">
-       {uri ? <div className="postContent">
+    return (<div className={style.postBlock}>
+       {uri ? <div className={style.postContent}>
              <img src={`data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`}></img> 
         </div>: null}
-        <div className="postInfo">
-            <div className="postHeader">
+        <div className={style.postInfo}>
+            <div className={style.postHeader}>
                 <h2>{post[0].title}</h2>
                 <p>{post[0].postDate.split(" ")[0]}</p>
             </div>
             <p>{post[0].desc}</p>
-            <div className="postTagsList">
+            <div className={style.postTagsList}>
                 {tagList.map((tag) => (
-                    <button className="postTagLabel" key={`postTag${tag.tagId}`}>
+                    <button className={style.postTagLabel} key={`postTag${tag.tagId}`}>
                         {tag.tagDisplay}
                     </button>
                 ))}

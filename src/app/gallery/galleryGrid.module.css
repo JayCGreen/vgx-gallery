@@ -1,0 +1,40 @@
+.galleryGrid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0.5%;
+	width: 100%;
+}
+
+.galleryItem, .gridPost{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	aspect-ratio: 1/ 1;
+	box-sizing: border-box;
+	padding: 2%;
+	height: 100%;
+	gap: 2%;
+	background: none;
+	border: none;
+	text-decoration: none;
+	color: black;
+}
+
+.galleryItem img {
+	height: 100%;
+	object-fit: cover;
+	transition: ease 2s;
+}
+
+.galleryItem:hover img {
+	object-fit: contain;
+}
+
+@media screen and (max-width: 600px) {
+	.galleryGrid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.5%;
+		width: 100%;
+	}
+}

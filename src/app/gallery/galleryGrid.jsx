@@ -4,6 +4,7 @@
  */
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import GridComponent from "./gridComponent";
+import style from "./galleryGrid.module.css";
 
 export default async function GalleryGrid() {
     const { env } = await getCloudflareContext({ async: true });
@@ -22,7 +23,7 @@ export default async function GalleryGrid() {
         return {...el, uri: source};
     }))
     return (
-        <div className="galleryGrid">
+        <div className={style.galleryGrid}>
             <GridComponent items={galleryItems}></GridComponent>
         </div>)
 }

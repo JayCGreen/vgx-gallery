@@ -3,7 +3,9 @@
  * @returns A modal with a form for the user to add Tags to the list of options
  */
 'use client'
-import {addTag} from "./actions"
+import {addTag} from "./actions";
+import style from "./upload.module.css"
+
 
 export default function TagModal() {
     var tagFields = [
@@ -24,7 +26,7 @@ export default function TagModal() {
             <form action={addTag}>
                 {
                     tagFields.map((el) => (
-                        <div key={el.id} className="uploadInput">
+                        <div key={el.id} className={style.uploadInput}>
                             <label htmlFor={el.id}>{el.label}</label>
                             <input name={el.id} id={el.id} type={el.type}></input>
                         </div>

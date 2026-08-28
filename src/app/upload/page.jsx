@@ -7,6 +7,7 @@ import CollectionManager from "./collectionManager"
 import TagModal from "./tagModal";
 import CollectionModal from "./collectionModal";
 import { addPost } from "./actions"
+import style from "./upload.module.css"
 
 
 export default function Uploader() {
@@ -41,11 +42,11 @@ export default function Uploader() {
     ]
 
     return (
-        <div className="uploadPage">
-            <form className="uploadForm" action={addPost}>
+        <div className={style.uploadPage}>
+            <form className={style.uploadForm} action={addPost}>
                 {
                     inputFields.map((el) => (
-                        <div key={el.id} className="uploadInput">
+                        <div key={el.id} className={style.uploadInput}>
                             <label htmlFor={el.id}>{el.label}</label>
                             {el.textArea ? <textarea name={el.name} id={el.id} style={el.style}></textarea> : <input name={el.name} id={el.id} style={el.style} type={el.type}></input>}
                         </div>

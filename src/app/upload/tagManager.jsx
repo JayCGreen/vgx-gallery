@@ -5,12 +5,14 @@
 
 import AddTag from "./addTagButton";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import style from "./upload.module.css"
+
 
 export default async function TagManager() {
     const {env} = await getCloudflareContext({async:true});
     const tags = (await env.vgx_feed.prepare("SELECT * FROM Tags").run()).results
 
-    return (<div className="groupDataInput">
+    return (<div className={style.groupDataInput}>
         <select name="postTags" multiple>
             {
                 tags.map((el) => (

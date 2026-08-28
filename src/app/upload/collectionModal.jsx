@@ -4,6 +4,8 @@
  */
 'use client'
 import {addCollection} from "./actions"
+import style from "./upload.module.css"
+
 
 export default function CollectionModal() {
     var collectionFields = [
@@ -24,7 +26,7 @@ export default function CollectionModal() {
             <form action={addCollection}>
                 {
                     collectionFields.map((el) => (
-                        <div key={el.id} className="uploadInput">
+                        <div key={el.id} className={style.uploadInput}>
                             <label htmlFor={el.id}>{el.label}</label>
                             <input name={el.id} id={el.id} type={el.type}></input>
                         </div>
