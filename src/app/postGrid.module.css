@@ -7,7 +7,7 @@
 	list-style: none;
 }
 
-.gridPostContainer{
+.gridPostContainer {
 	display: flex;
 	width: 100%;
 	aspect-ratio: 1/ 1;
@@ -17,22 +17,22 @@
 	transition: ease .2s;
 }
 
-.gridPostContainer:hover{
+.gridPostContainer:hover {
 	box-shadow: 4px 4px 2px black;
 }
 
-.gridPost{
+.gridPost {
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;
-    color: black;
-    padding: 3%;
+	color: black;
+	padding: 3%;
 	height: 100%;
-	width:100%;
-	box-sizing:border-box;
+	width: 100%;
+	box-sizing: border-box;
 }
 
-.gridPost:hover{
+.gridPost:hover {
 	cursor: pointer
 }
 
@@ -45,18 +45,19 @@
 .gridPostHeader h4 {
 	padding: 0;
 	margin: 0;
+
 }
 
-.gridPostContent{
-	display:flex;
+.gridPostContent {
+	display: flex;
 	justify-content: center;
 	min-height: 0;
 	max-height: 100%;
 	min-width: 100%;
-	max-width:100%;
+	max-width: 100%;
 }
 
-.postImage{
+.postImage {
 	max-height: 100%;
 	max-width: 100%;
 	min-height: 0;
@@ -64,9 +65,17 @@
 	object-fit: contain;
 }
 
-.gridPostDesc{
+.gridPostDesc {
 	align-self: flex-start;
 	width: 100%;
+	line-height: 1rem;
+	height: calc(1rem * 3);
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
 }
 
 
@@ -76,7 +85,7 @@
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		gap: 2%;
 		width: 100%;
-		padding:0;
+		padding: 0;
 	}
 
 	.gridPostHeader {

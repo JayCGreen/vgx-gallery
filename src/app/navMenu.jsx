@@ -3,6 +3,6 @@ export default function NavMenu(){
         <li><a href="/">Home</a></li>
         <li><a href="/posts">Updates</a></li>
         <li><a href="/gallery">Gallery</a></li>
-        <li><a>Collections</a></li>
+        <li><a href="/collections">Collections</a></li>
     </ul>)
 }

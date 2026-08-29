@@ -39,23 +39,3 @@ body {
 	align-self: center;
 }
 
-.homeCollectionsList {
-	width: 100%;
-	padding:0;
-	display: flex;
-	gap: 2%;
-	flex-direction: column;
-	list-style-type: none;
-}
-
-.homeCollectionsList li{
-	width: 100%;
-	text-align: center;
-	
-}
-
-.collectionItem {
-	text-decoration:none;
-	color:black
-}
-

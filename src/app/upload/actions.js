@@ -9,7 +9,7 @@ export async function addTag(formData) {
 }
 
 export async function addCollection(formData) {
-    var res = await getCloudflareContext().env.vgx_feed.prepare("INSERT INTO Collections (collectionName, collectionDisplay) VALUES (?, ?)").bind(formData.get("collectionId"), formData.get("collectionName"), new Date()).run();
+    var res = await getCloudflareContext().env.vgx_feed.prepare("INSERT INTO Collections (collectionName, collectionDisplay) VALUES (?, ?)").bind(formData.get("collectionId"), formData.get("collectionName")).run();
     console.log("Collection Uploaded")
 }
 
