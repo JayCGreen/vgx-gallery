@@ -7,16 +7,19 @@ export default function PostGrid({ items }) {
             (
                 <li key={`post${post.postId}`} className={styles.gridPostContainer}>
                     <a className={styles.gridPost} href={`/p/${post.postId}`}>
-                        <div className={styles.gridPostHeader}>
-                            <h4>{post.title}</h4> <p>{post.postDate.split(" ")[0]}</p>
-                        </div>
-                        <hr style={{width: "100%"}}></hr>
+
+                        {post.source ?
+                            <div className={styles.postMediaContainer}>
+                                <img className={styles.postImage} src={post.source}></img>
+                            </div> : null}
                         <div className={styles.gridPostContent}>
-                            {post.source ? <img className={styles.postImage} src={post.source}></img> :
-                                <span className={styles.gridPostDesc}>
-                                    {post.desc}
-                                </span>
-                            }
+                            <div className={styles.gridPostHeader}>
+                                <h4>{post.title}</h4> <p>{post.postDate.split(" ")[0]}</p>
+                            </div>
+                            <span className={styles.gridPostDesc}>
+                                {post.desc}
+                            </span>
+
                         </div>
 
                     </a>
