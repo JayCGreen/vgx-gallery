@@ -36,8 +36,9 @@ export default async function RootLayout({ children }) {
 
                     <>
                         <Header></Header>
-                        <hr></hr>
+                        <div className="pageContent">
                         {children}
+                        </div>
                     </>
                     : <AgeGate></AgeGate>}
             </div>

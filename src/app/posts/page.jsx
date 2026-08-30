@@ -1,5 +1,6 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import PostGrid from "../postGrid";
+import HeroBanner from "../heroBanner";
 
 
 export default async function PostCat({ searchParams }) {
@@ -34,8 +35,11 @@ export default async function PostCat({ searchParams }) {
 
     return (
         <div className="postPage">
+            <HeroBanner type={filters.c ? "collection" : "posts"} id={filters.c ? filters.c : "posts"}>
+            </HeroBanner>
             <h3>
-                {collectionDisplay.length > 0 ? collectionDisplay[0].collectionDisplay : null} Posts</h3>
+                {collectionDisplay.length > 0 ? collectionDisplay[0].collectionDisplay : null} Posts
+            </h3>
             <PostGrid items={itemList}></PostGrid>
         </div>
     )
