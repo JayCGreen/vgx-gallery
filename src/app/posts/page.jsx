@@ -5,7 +5,7 @@ import HeroBanner from "../heroBanner";
 
 export default async function PostCat({ searchParams }) {
     const filters = (await searchParams);
-    const pageSize = 4;
+    const pageSize = 5;
     console.log("filters be ", filters)
     const { env } = await getCloudflareContext({ async: true });
     const postList = (await env.vgx_feed.prepare(
