@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
     title: "VnderGraphx",
-    description: "Gallery Site for VnderGarphx",
+    description: "Gallery Site for VnderGraphx",
 };
 
 

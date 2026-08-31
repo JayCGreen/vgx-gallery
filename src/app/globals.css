@@ -26,13 +26,24 @@ body {
 	justify-content: space-evenly;
 	list-style: none;
 	padding: unset;
+
 	
 }
 
-.header a{
-	text-decoration: none;
-	color: black;
+.header hr{
+	margin: 0;
 }
+
+.link{
+	text-decoration: none;
+	color: #555;
+}
+
+.active{
+	color: black;
+	border-bottom: 3px solid green;
+}
+
 
 .pageContent{
 	padding: 8;
