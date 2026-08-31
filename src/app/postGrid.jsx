@@ -28,8 +28,9 @@ export default function PostGrid({ items, pageSize, total, showMore }) {
                                 </div> : null}
                             <div className={styles.gridPostContent}>
                                 <div className={styles.gridPostHeader}>
-                                    <h4>{post.title}</h4> <p>{post?.postDate?.split(" ")[0]}</p>
+                                    <p>{post?.postDate?.split(" ")[0]}</p><h4>{post.title}</h4> 
                                 </div>
+                                <hr style={{width: "100%"}}></hr>
                                 <span className={styles.gridPostDesc}>
                                     {post.desc}
                                 </span>
