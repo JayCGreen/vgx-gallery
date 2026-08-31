@@ -2,7 +2,7 @@
 	width: 100%;
 	padding:0;
 	display: grid;
-	gap: 2%;
+	gap: 3%;
 	flex-direction: column;
 	list-style-type: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -11,10 +11,33 @@
 .collectionsList li{
 	width: 100%;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid;
+	min-height:0;
 }
 
 .collectionItem {
 	text-decoration:none;
-	color:black
+	color:black;
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+.collectionCover{
+	width:100%;
+	display:flex;
+
+}
+
+.collectionImage{
+	width: 100%;
+	min-height: 0;
+	object-fit: cover;
+	object-position: 0 30%;
+	max-height: 6rem;
+	min-height:0;
 }
 
