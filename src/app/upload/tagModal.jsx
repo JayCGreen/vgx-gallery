@@ -23,7 +23,10 @@ export default function TagModal() {
 
     return (<div>
         <dialog id="tagDialog">
-            <form action={addTag}>
+            <form onSubmit={(event, e) =>{
+                console.log(event, e)
+                event.preventDefault()
+                }}>
                 {
                     tagFields.map((el) => (
                         <div key={el.id} className={style.uploadInput}>
@@ -33,6 +36,7 @@ export default function TagModal() {
                     ))
                 }
                 <input type="submit"></input>
+                <input type="button" onClick={()=>{document.getElementById("tagDialog").close()}} value="Cancel"></input>
             </form>
         </dialog>
     </div>)

@@ -4,12 +4,9 @@ import HeroBanner from "./heroBanner";
 
 
 export default function Landing(){
-    //put in a check for the age, if not then redirect
-
     return (
         <div>
-            <Recents></Recents>
-            <FeatureCollections></FeatureCollections>
+            <h3>Under Construction</h3>
         </div>
     )
 }

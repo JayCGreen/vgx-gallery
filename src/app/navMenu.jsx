@@ -11,10 +11,6 @@ export default function NavMenu(){
             label: "Home"
         },
         {
-            route:"/posts",
-            label: "Posts"
-        },
-        {
             route:"/gallery",
             label: "Gallery"
         },

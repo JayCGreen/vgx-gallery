@@ -14,16 +14,22 @@ export default function Uploader() {
 
     var inputFields = [
         {
+            label: "File",
+            id: "file",
+            type: "file",
+            name: "postFile"
+        },
+        {
             label: " Title",
             id: "title",
             type: "text",
             name: "postTitle"
         },
         {
-            label: "File",
-            id: "file",
-            type: "file",
-            name: "postFile"
+            label: "Created Date",
+            id: "created",
+            type: "date",
+            name: "createdDate"
         },
         {
             label: "Description",
@@ -48,13 +54,12 @@ export default function Uploader() {
                     inputFields.map((el) => (
                         <div key={el.id} className={style.uploadInput}>
                             <label htmlFor={el.id}>{el.label}</label>
-                            {el.textArea ? <textarea name={el.name} id={el.id} style={el.style}></textarea> : <input name={el.name} id={el.id} style={el.style} type={el.type}></input>}
+                            {el.textArea ? <textarea name={el.name} id={el.id} style={el.style}></textarea> : <input name={el.name} id={el.id} style={el.style} type={el.type} autoComplete={"off"}></input>}
                         </div>
                     ))
                 }
                 <TagManager></TagManager>
-                <CollectionManager></CollectionManager>
-                <input type="submit"></input>
+                <input className={style.submitButton} type="submit" value="Post It!"></input>
             </form>
             <TagModal></TagModal>
             <CollectionModal></CollectionModal>

@@ -6,16 +6,16 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import GridComponent from "./gridComponent";
 import style from "./galleryGrid.module.css";
 
-export default async function GalleryGrid() {
+export default async function GalleryGrid({ searchParams }) {
+    const filters = (await searchParams);
+    const pageSize = 5;
+    console.log("filters be ", filters)
     const { env } = await getCloudflareContext({ async: true });
     const postList = (await env.vgx_feed.prepare(
-        "SELECT * FROM Post ORDER BY julianday(postDate) DESC"
-    ).run()).results;
-    const mediaList = (await env.vgx_feed.prepare(
-        "SELECT * FROM Media ORDER BY julianday(uploadDate) DESC"
+        "SELECT * FROM Posts ORDER BY julianday(uploadDate) DESC"
     ).run()).results;
 
-    const galleryItems = await Promise.all(mediaList.map(async (el) => {
+    const galleryItems = await Promise.all(postList.map(async (el) => {
         var mediaUrl = await env.vgx_r2?.get(el.r2Id);
         var contentType = mediaUrl.httpMetadata.contentType;
         var uri = await mediaUrl.arrayBuffer();

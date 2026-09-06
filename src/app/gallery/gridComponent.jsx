@@ -12,11 +12,11 @@ export default function GridComponent({ items }) {
                 if (!media) return;
                 return (
                     <button onClick={() => setIndex(index)} key={`media${media.mediaId}`} className={style.galleryItem}>
-                        <img src={media.uri}></img>
+                        <img className={style.galleryItem} src={media.uri}></img>
                     </button>
                 )
             })}
-            <Lightbox items={items} index={gallIndex}></Lightbox>
+            <Lightbox items={items} index={gallIndex} setIndex={setIndex}></Lightbox>
         </>
     )
 }

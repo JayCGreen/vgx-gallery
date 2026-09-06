@@ -8,9 +8,7 @@ export default async function PostCat({ searchParams }) {
     const pageSize = 5;
     console.log("filters be ", filters)
     const { env } = await getCloudflareContext({ async: true });
-    const postList = (await env.vgx_feed.prepare(
-        filterPosts(filters)
-    ).run()).results;
+    const postList = [];
     console.log("items be", postList)
     const count = await getTotal(filters)
 
