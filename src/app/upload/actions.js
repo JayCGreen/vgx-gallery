@@ -37,7 +37,7 @@ export async function addPost(formData) {
                 r2.put(formData.get("postFile").name, formData.get("postFile"))
             }
             //Insert tag and collection relationships
-            if (formData.get("postTags")) {
+            if (formData.get("postTags").split()) {
                 console.log("Tag format is ", formData.getAll("postTags"))
                 formData.getAll("postTags").forEach((el) => {
                     db.prepare("INSERT INTO PostTags (post, tag) VALUES (?, ?)")
@@ -47,7 +47,7 @@ export async function addPost(formData) {
                         ).run();
                 })
             }
-            if (formData.get("postCollections")) {
+            if (formData.get("postCollections").split()) {
                 console.log("Collection format is", formData.get("postCollections"))
                 formData.getAll("postCollections").forEach((el) => {
                     db.prepare("INSERT INTO CollectionPosts (post, collection) VALUES (?, ?)")

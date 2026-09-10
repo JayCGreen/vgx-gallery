@@ -23,10 +23,7 @@ export default function TagModal() {
 
     return (<div>
         <dialog id="tagDialog">
-            <form onSubmit={(event, e) =>{
-                console.log(event, e)
-                event.preventDefault()
-                }}>
+            <form onSubmit={addTag}>
                 {
                     tagFields.map((el) => (
                         <div key={el.id} className={style.uploadInput}>

@@ -1,0 +1,32 @@
+.pillbox{
+    display:flex;
+    position:relative;
+    flex-wrap:wrap;
+    padding: 5%;
+    gap: 1rem;
+    width: 100%;
+
+}
+
+.pill{
+    border-radius: 150px;
+    border: solid 2px #FF9000;
+    box-shadow: 2 2 #FF9000;
+    padding: 1%;
+    gap: 2%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.pill button{
+    border: unset;
+    background: unset;
+}
+.pill button:hover{
+    cursor: pointer;
+}
+
+.test{
+    background: red;
+}

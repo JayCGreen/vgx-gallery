@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import style from "./lightbox.module.css"
 
-export default function Lightbox({ items, index, setIndex}) {
+export default function Lightbox({ items, index, setIndex }) {
     //const [lightboxIndex, setIndex] = useState(index);
     /*
     useEffect(()=>{
@@ -11,6 +11,14 @@ export default function Lightbox({ items, index, setIndex}) {
     */
     const len = items?.length;
     console.log(items[index])
+    useEffect(() => {
+        function handSwipe(e){
+            console.log("hit with the swipe", e)
+        }
+        console.log("hey am I seen")
+        window.addEventListener("touchmove", handSwipe)
+        return () => window.removeEventListener("touchmove", handSwipe)
+    }, [])
 
     return (<>
         {index != undefined ? <div className={style.lightbox}>
