@@ -16,7 +16,7 @@ export async function addCollection(formData) {
 export async function addPost(formData) {
     try {
         //Check the key to see if it matches the passwork
-        console.log("file formData looks like ", formData.get("postFile").type)
+        console.log("file formData looks like ",formData.get("postTitle") , formData.getAll("postCollections")[0]==true)
         if (formData.get("postKey") == "X-Mas") {
             const { env } = getCloudflareContext()
             const db = env.vgx_feed;
@@ -37,6 +37,7 @@ export async function addPost(formData) {
                 r2.put(formData.get("postFile").name, formData.get("postFile"))
             }
             //Insert tag and collection relationships
+            /*
             if (formData.get("postTags").split()) {
                 console.log("Tag format is ", formData.getAll("postTags"))
                 formData.getAll("postTags").forEach((el) => {
@@ -47,9 +48,12 @@ export async function addPost(formData) {
                         ).run();
                 })
             }
-            if (formData.get("postCollections").split()) {
-                console.log("Collection format is", formData.get("postCollections"))
-                formData.getAll("postCollections").forEach((el) => {
+                */
+            var collList = formData.getAll("postCollections")
+            var collArr = collList[collList.length-1].split(",");
+            if (collArr) {
+                console.log("Collection format is", collList[collList.length-1])
+                collArr.forEach((el) => {
                     db.prepare("INSERT INTO CollectionPosts (post, collection) VALUES (?, ?)")
                         .bind(
                             postId,

@@ -53,7 +53,7 @@ export default function CollectionManager(){
                     {
                         collectionList.filter((el) => !(selectedCollections.includes(el)))?.map((el) => (
                             <li key={el.collectionName} value={el.collectionId}><button onClick={() => {
-                                console.log("just got hit")
+                                console.log("just got hit", )
                                 setSelectedCollections([...selectedCollections, el])
                             }}>{el.collectionDisplay}</button></li>
                         ))
@@ -62,7 +62,7 @@ export default function CollectionManager(){
             </div>
         </div>
         <PillBox editable={true} group={selectedCollections} setGroup={setSelectedCollections}></PillBox>
-        <input name="postCollections" type="hidden" value={selectedCollections.map((el)=>el.collectionId).join()}></input>
+        <input name="postCollections" type="hidden" value={(selectedCollections.map((el)=>el.collectionId)).join()}></input>
         <AddCollectionButton></AddCollectionButton>
     </div>)
 }

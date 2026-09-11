@@ -54,8 +54,9 @@ export default async function GalleryGrid({ searchParams }) {
         var collectionMap = new Map();
         var tagMap = new Map();
         collectionList.forEach((el) => {
+            console.log("map this round is", collectionMap, el, collectionMap.has(el.post), collectionMap.get(el))
                 if (collectionMap.has(el.post)) {
-                    collectionMap.set(el.post, collectionMap.get(el.postId).concat(el))
+                    collectionMap.set(el.post, collectionMap.get(el.post).concat([el]))
                 } else {
                     collectionMap.set(el.post, [el])
                 }
