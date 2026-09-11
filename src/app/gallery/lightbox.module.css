@@ -31,5 +31,22 @@
 	max-width: 100%;
 	min-height: 0;
 	box-sizing: border-box;
+
+}
+
+.lightboxContent{
+	max-height: 100%;
+	max-width: 100%;
+	min-height: 0;
+	box-sizing: border-box;
 	padding: .5rem;
+	display: flex;
+}
+
+.postInfo{
+	background: #fff;
+	max-width: 100%;
+	padding: 5%;
+	border-radius: 0 15px 15px 0;
+	box-sizing:border-box;
 }

@@ -4,6 +4,8 @@ import style from "./lightbox.module.css"
 
 export default function Lightbox({ items, index, setIndex }) {
     //const [lightboxIndex, setIndex] = useState(index);
+    const [showInfo, setShowInfo] = useState(false)
+    const post = items[index]
     /*
     useEffect(()=>{
         setIndex(index)
@@ -12,7 +14,7 @@ export default function Lightbox({ items, index, setIndex }) {
     const len = items?.length;
     console.log(items[index])
     useEffect(() => {
-        function handSwipe(e){
+        function handSwipe(e) {
             console.log("hit with the swipe", e)
         }
         console.log("hey am I seen")
@@ -23,8 +25,17 @@ export default function Lightbox({ items, index, setIndex }) {
     return (<>
         {index != undefined ? <div className={style.lightbox}>
             <button onClick={() => setIndex()}>Exit</button>
-            <button> Info</button>
-            <img className={style.lightboxImg} src={items[index].uri}></img>
+            <button onClick={() => setShowInfo(!showInfo)}> Info</button>
+            <div className={style.lightboxContent}>
+                <img className={style.lightboxImg} src={items[index].uri}></img>
+                {showInfo  ? <div className={style.postInfo}>
+                    <div className={style.postHeader}>
+                        <h2>{post.title}</h2>
+                        <p>{post.uploadDate?.split(" ")[0]}</p>
+                    </div>
+                    <p>{post.description}</p>
+                </div> : null }
+            </div> 
             <div className={style.lightboxBody}>
                 <button className={style.lightboxControls} onClick={() => setIndex((((index - 1) % len) + len) % len)}> Left</button>
                 <button className={style.lightboxControls} onClick={() => setIndex((((index + 1) % len) + len) % len)}> Right</button>
