@@ -2,8 +2,8 @@
     display:flex;
     position:relative;
     flex-wrap:wrap;
-    padding: 5%;
-    gap: 1rem;
+    padding: 1%;
+    gap: .5rem;
     width: 100%;
 
 }

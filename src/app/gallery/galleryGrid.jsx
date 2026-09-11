@@ -12,16 +12,14 @@ export default async function GalleryGrid({ searchParams }) {
 
     console.log("filters be ", filters)
     const { env } = await getCloudflareContext({ async: true });
-    var postList = []
-    if (filters.c) {
-        postList = (await env.vgx_feed.prepare(
-            "SELECT * FROM Posts INNER JOIN CollectionPosts ON Posts.postId = CollectionPosts.post WHERE CollectionPosts.collection = ?  ORDER BY julianday(uploadDate) DESC"
-        ).bind(filters.c).run()).results;
-    } else {
-        postList= (await env.vgx_feed.prepare(
-            "SELECT * FROM Posts ORDER BY julianday(uploadDate) DESC"
-        ).run()).results;
-    }
+    var postList = (await env.vgx_feed.prepare(
+        filterPosts(filters)
+    ).run()).results;
+    console.log("list is ", postList)
+    //grab the appropriate Collection info
+    postList.forEach((el)=>{
+
+    })
 
     const galleryItems = await Promise.all(postList.map(async (el) => {
         var mediaUrl = await env.vgx_r2?.get(el.r2Id);
@@ -34,5 +32,19 @@ export default async function GalleryGrid({ searchParams }) {
         <div className={style.galleryGrid}>
             <GridComponent items={galleryItems}></GridComponent>
         </div>)
+
+    function filterPosts(filter) {
+        var query = "SELECT * FROM Posts LEFT JOIN CollectionPosts ON Posts.postId = CollectionPosts.post LEFT JOIN Collections ON Collections.collectionId = CollectionPosts.collection";
+        if (filter.c || filter.tag) {
+            query += " WHERE "
+            if (filter?.c) {
+                query += `CollectionPosts.collection=${filter.c} `;
+            }
+        }
+        query
+        //something for the tags
+        query += ` ORDER BY julianday(Posts.uploadDate) DESC`
+        return query;
+    }
 }
 
