@@ -14,6 +14,7 @@ export default function Lightbox({ items, index, setIndex }) {
     */
     const len = items?.length;
     console.log(items[index])
+    console.log("collecion is", items[index]?.collections)
     useEffect(() => {
         function handSwipe(e) {
             console.log("hit with the swipe", e)
@@ -38,9 +39,9 @@ export default function Lightbox({ items, index, setIndex }) {
                         <p>{post.uploadDate?.split(" ")[0]}</p>
                     </div>
                     <p>{post.description}</p>
-                    {post.collection ? <div>
+                    {post.collections.length > 0 ? <div>
                         <h5>Collections</h5>
-                        <PillBox editable={false} group={[post]}></PillBox>
+                        <PillBox editable={false} group={post.collections}></PillBox>
                     </div> : null}
                 </div> : null}
             </div>

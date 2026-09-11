@@ -15,12 +15,12 @@ export default async function GalleryGrid({ searchParams }) {
     var postList = (await env.vgx_feed.prepare(
         filterPosts(filters)
     ).run()).results;
+    var collectionList = (await env.vgx_feed.prepare(
+        "Select * from CollectionPosts JOIN Collections ON Collections.collectionId = CollectionPosts.collection"
+    ).run()).results;
     console.log("list is ", postList)
     //grab the appropriate Collection info
-    postList.forEach((el)=>{
-
-    })
-
+    
     const galleryItems = await Promise.all(postList.map(async (el) => {
         var mediaUrl = await env.vgx_r2?.get(el.r2Id);
         var contentType = mediaUrl.httpMetadata.contentType;
@@ -28,15 +28,18 @@ export default async function GalleryGrid({ searchParams }) {
         var source = `data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`
         return { ...el, uri: source };
     }))
+
+    transform();
+    console.log("new items be ", galleryItems)
     return (
         <div className={style.galleryGrid}>
             <GridComponent items={galleryItems}></GridComponent>
         </div>)
 
     function filterPosts(filter) {
-        var query = "SELECT * FROM Posts LEFT JOIN CollectionPosts ON Posts.postId = CollectionPosts.post LEFT JOIN Collections ON Collections.collectionId = CollectionPosts.collection";
+        var query = "SELECT * FROM Posts ";
         if (filter.c || filter.tag) {
-            query += " WHERE "
+            query += " LEFT JOIN CollectionPosts ON Posts.postId = CollectionPosts.post WHERE "
             if (filter?.c) {
                 query += `CollectionPosts.collection=${filter.c} `;
             }
@@ -45,6 +48,27 @@ export default async function GalleryGrid({ searchParams }) {
         //something for the tags
         query += ` ORDER BY julianday(Posts.uploadDate) DESC`
         return query;
+    }
+
+    function transform() {
+        var collectionMap = new Map();
+        var tagMap = new Map();
+        collectionList.forEach((el) => {
+                if (collectionMap.has(el.post)) {
+                    collectionMap.set(el.post, collectionMap.get(el.postId).concat(el))
+                } else {
+                    collectionMap.set(el.post, [el])
+                }
+        })
+        galleryItems.forEach((a) => {
+            if(collectionMap.has(a.postId)){
+                a.collections = collectionMap.get(a.postId)
+            }
+            else{
+                a.collections = [];
+            }
+        })
+
     }
 }
 
