@@ -18,6 +18,9 @@ export default async function GalleryGrid({ searchParams }) {
     var collectionList = (await env.vgx_feed.prepare(
         "Select * from CollectionPosts JOIN Collections ON Collections.collectionId = CollectionPosts.collection"
     ).run()).results;
+    var tagList = (await env.vgx_feed.prepare(
+        "Select * from PostTags JOIN Tags ON Tags.tagId = PostTags.tag"
+    ).run()).results;
     console.log("list is ", postList)
     //grab the appropriate Collection info
     
@@ -61,12 +64,28 @@ export default async function GalleryGrid({ searchParams }) {
                     collectionMap.set(el.post, [el])
                 }
         })
+
+        tagList.forEach((el)=>{
+            if(tagMap.has(el.post)){
+                tagMap.set(el.post, tagMap.get(el.post).concat(el))
+            }
+            else{
+                tagMap.set(el.post, [el])
+            }
+        })
+
         galleryItems.forEach((a) => {
             if(collectionMap.has(a.postId)){
                 a.collections = collectionMap.get(a.postId)
             }
             else{
                 a.collections = [];
+            }
+            if(tagMap.has(a.postId)){
+                a.tags = tagMap.get(a.postId)
+            }
+            else{
+                a.tags = [];
             }
         })
 

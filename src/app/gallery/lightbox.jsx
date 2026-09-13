@@ -39,9 +39,13 @@ export default function Lightbox({ items, index, setIndex }) {
                         <p>{post.uploadDate?.split(" ")[0]}</p>
                     </div>
                     <p>{post.description}</p>
-                    {post.collections.length > 0 ? <div>
+                    {post.collections?.length > 0 ? <div>
                         <h5>Collections</h5>
                         <PillBox editable={false} group={post.collections}></PillBox>
+                    </div> : null}
+                    {post.tags?.length > 0 ? <div>
+                        <h5>Tags</h5>
+                        <PillBox editable={false} group={post.tags}></PillBox>
                     </div> : null}
                 </div> : null}
             </div>

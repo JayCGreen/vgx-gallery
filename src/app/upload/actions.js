@@ -16,17 +16,18 @@ export async function addCollection(formData) {
 export async function addPost(formData) {
     try {
         //Check the key to see if it matches the passwork
-        console.log("file formData looks like ",formData.get("postTitle") , formData.getAll("postCollections")[0]==true)
+        console.log("file formData looks like ", formData.get("createdDate"), formData)
         if (formData.get("postKey") == "X-Mas") {
             const { env } = getCloudflareContext()
             const db = env.vgx_feed;
             //Insert post into table
-            var post = await db.prepare("INSERT INTO Posts (title, description, r2Id, contentType, uploadDate, active) VALUES (?, ?, ?, ?, datetime('now','localtime'), 1) RETURNING *")
+            var post = await db.prepare("INSERT INTO Posts (title, description, r2Id, contentType,  uploadDate, createdDate, active) VALUES (?, ?, ?, ?, datetime('now','localtime'), ?,  1) RETURNING *")
                 .bind(
                     formData.get("postTitle"),
                     formData.get("postDesc"),
                     formData.get("postFile").name,
-                    formData.get("postFile").type
+                    formData.get("postFile").type,
+                    formData.get("createdDate")
 
                 ).run();
             var postId = post.results[0].postId
@@ -37,22 +38,21 @@ export async function addPost(formData) {
                 r2.put(formData.get("postFile").name, formData.get("postFile"))
             }
             //Insert tag and collection relationships
-            /*
-            if (formData.get("postTags").split()) {
-                console.log("Tag format is ", formData.getAll("postTags"))
-                formData.getAll("postTags").forEach((el) => {
+            var tagList = formData.getAll("postTags")
+            var tagArr = tagList[tagList.length - 1].split(",");
+            if (tagArr) {
+                tagArr.forEach((el) => {
                     db.prepare("INSERT INTO PostTags (post, tag) VALUES (?, ?)")
                         .bind(
                             postId,
                             el
                         ).run();
                 })
+
             }
-                */
             var collList = formData.getAll("postCollections")
-            var collArr = collList[collList.length-1].split(",");
+            var collArr = collList[collList.length - 1].split(",");
             if (collArr) {
-                console.log("Collection format is", collList[collList.length-1])
                 collArr.forEach((el) => {
                     db.prepare("INSERT INTO CollectionPosts (post, collection) VALUES (?, ?)")
                         .bind(
@@ -62,8 +62,9 @@ export async function addPost(formData) {
                 })
 
             }
-
+            console.log("Upload Complete")
         }
+        
         else {
             //Throw error
 
