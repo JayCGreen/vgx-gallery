@@ -20,16 +20,20 @@ export default function Lightbox({ items, index, setIndex }) {
             console.log("hit with the swipe", e)
         }
         console.log("hey am I seen")
-        window.addEventListener("touchmove", handSwipe)
-        return () => window.removeEventListener("touchmove", handSwipe)
+        window.addEventListener("scrollend", handSwipe)
+        return () => window.removeEventListener("scrollend", handSwipe)
     }, [])
 
     return (<>
         {index != undefined ? <div className={style.lightbox}>
             <div className={style.topControls}>
-                <button onClick={() => setShowInfo(!showInfo)}> Info</button>
+                <button onClick={() => setShowInfo(!showInfo)}> &ifr;</button>
+                <div>
+                    <button className={style.lightboxControls} onClick={() => setIndex((((index - 1) % len) + len) % len)}>&larr;</button>
+                    <button className={style.lightboxControls} onClick={() => setIndex((((index + 1) % len) + len) % len)}> &rarr;</button>
+                </div>
                 <button onClick={() => setIndex()}>Exit</button>
-                
+
             </div>
             <div className={style.lightboxContent}>
                 <img className={style.lightboxImg} src={items[index].uri}></img>
@@ -48,10 +52,6 @@ export default function Lightbox({ items, index, setIndex }) {
                         <PillBox editable={false} group={post.tags}></PillBox>
                     </div> : null}
                 </div> : null}
-            </div>
-            <div className={style.lightboxBody}>
-                <button className={style.lightboxControls} onClick={() => setIndex((((index - 1) % len) + len) % len)}> Left</button>
-                <button className={style.lightboxControls} onClick={() => setIndex((((index + 1) % len) + len) % len)}> Right</button>
             </div>
         </div> : null}
     </>)

@@ -33,7 +33,6 @@ export default async function GalleryGrid({ searchParams }) {
     }))
 
     transform();
-    console.log("new items be ", galleryItems)
     return (
         <div className={style.galleryGrid}>
             <GridComponent items={galleryItems}></GridComponent>
