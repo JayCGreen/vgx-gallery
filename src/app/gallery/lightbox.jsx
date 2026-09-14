@@ -27,7 +27,7 @@ export default function Lightbox({ items, index, setIndex }) {
     return (<>
         {index != undefined ? <div className={style.lightbox}>
             <div className={style.topControls}>
-                <button onClick={() => setShowInfo(!showInfo)}> &ifr;</button>
+                <button onClick={() => setShowInfo(!showInfo)}> Info</button>
                 <div>
                     <button className={style.lightboxControls} onClick={() => setIndex((((index - 1) % len) + len) % len)}>&larr;</button>
                     <button className={style.lightboxControls} onClick={() => setIndex((((index + 1) % len) + len) % len)}> &rarr;</button>
