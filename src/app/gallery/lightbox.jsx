@@ -41,22 +41,24 @@ export default function Lightbox({ items, index, setIndex }) {
             <div className={style.lightScroller}>
                 {items.map((post, i) => (
                     <div key={`lb_${post.postId}`} className={`${style.lightboxContent} ${i == index ? "activeImg" : ""}`}>
-                        <img className={style.lightboxImg} src={post.uri}></img>
-                        {showInfo ? <div className={style.postInfo}>
-                            <div className={style.postHeader}>
-                                <h2>{post.title}</h2>
-                                <p>{post.uploadDate?.split(" ")[0]}</p>
-                            </div>
-                            <p>{post.description}</p>
-                            {post.collections?.length > 0 ? <div>
-                                <h5>Collections</h5>
-                                <PillBox editable={false} group={post.collections}></PillBox>
+                        <div className={style.lightItem}>
+                            <img className={style.lightboxImg} src={post.uri}></img>
+                            {showInfo ? <div className={style.postInfo}>
+                                <div className={style.postHeader}>
+                                    <h2>{post.title}</h2>
+                                    <p>{post.uploadDate?.split(" ")[0]}</p>
+                                </div>
+                                <p>{post.description}</p>
+                                {post.collections?.length > 0 ? <div>
+                                    <h5>Collections</h5>
+                                    <PillBox editable={false} group={post.collections}></PillBox>
+                                </div> : null}
+                                {post.tags?.length > 0 ? <div>
+                                    <h5>Tags</h5>
+                                    <PillBox editable={false} group={post.tags}></PillBox>
+                                </div> : null}
                             </div> : null}
-                            {post.tags?.length > 0 ? <div>
-                                <h5>Tags</h5>
-                                <PillBox editable={false} group={post.tags}></PillBox>
-                            </div> : null}
-                        </div> : null}
+                        </div>
                     </div>))}
             </div>
         </div> : null}
