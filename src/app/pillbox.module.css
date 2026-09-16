@@ -14,7 +14,7 @@
     box-shadow: 2 2 #FF9000;
     padding: 1%;
     gap: 2%;
-    display: flex;
+    display: inline-block;
     align-items: center;
     white-space: nowrap;
 }

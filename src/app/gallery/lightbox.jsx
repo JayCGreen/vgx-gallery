@@ -22,7 +22,6 @@ export default function Lightbox({ items, index, setIndex }) {
         }
         console.log("hey am I seen")
         window.addEventListener("scrollend", handSwipe)
-        console.log("testing", document.getElementsByClassName("activeImg")[0])
         document.getElementsByClassName("activeImg")[0]?.scrollIntoView();
         return () => window.removeEventListener("scrollend", handSwipe)
     }, [index])
@@ -50,11 +49,9 @@ export default function Lightbox({ items, index, setIndex }) {
                                 </div>
                                 <p>{post.description}</p>
                                 {post.collections?.length > 0 ? <div>
-                                    <h5>Collections</h5>
                                     <PillBox editable={false} group={post.collections}></PillBox>
                                 </div> : null}
                                 {post.tags?.length > 0 ? <div>
-                                    <h5>Tags</h5>
                                     <PillBox editable={false} group={post.tags}></PillBox>
                                 </div> : null}
                             </div> : null}

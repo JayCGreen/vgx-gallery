@@ -10,7 +10,6 @@ export default async function GalleryGrid({ searchParams }) {
     const filters = (await searchParams);
     const pageSize = 5;
 
-    console.log("filters be ", filters)
     const { env } = await getCloudflareContext({ async: true });
     var postList = (await env.vgx_feed.prepare(
         filterPosts(filters)
@@ -21,7 +20,6 @@ export default async function GalleryGrid({ searchParams }) {
     var tagList = (await env.vgx_feed.prepare(
         "Select * from PostTags JOIN Tags ON Tags.tagId = PostTags.tag"
     ).run()).results;
-    console.log("list is ", postList)
     //grab the appropriate Collection info
     
     const galleryItems = await Promise.all(postList.map(async (el) => {
@@ -56,7 +54,6 @@ export default async function GalleryGrid({ searchParams }) {
         var collectionMap = new Map();
         var tagMap = new Map();
         collectionList.forEach((el) => {
-            console.log("map this round is", collectionMap, el, collectionMap.has(el.post), collectionMap.get(el))
                 if (collectionMap.has(el.post)) {
                     collectionMap.set(el.post, collectionMap.get(el.post).concat([el]))
                 } else {
