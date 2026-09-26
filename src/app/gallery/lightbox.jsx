@@ -22,8 +22,9 @@ export default function Lightbox({ items, index, setIndex }) {
             console.log("hit with the swipe", e)
         }
         console.log("hey am I seen")
-        window.addEventListener("scrollend", handSwipe)
+        document.getElementsByClassName("lightScroller")[0]?.addEventListener("scroll", handSwipe)
         document.getElementsByClassName("activeImg")[0]?.scrollIntoView();
+
         /*
         const ctx = document.getElementById("canvasTest")?.getContext("2d");
         const img = new Image();
@@ -37,7 +38,7 @@ export default function Lightbox({ items, index, setIndex }) {
         }
         });
         */
-        return () => window.removeEventListener("scrollend", handSwipe)
+        return () => document.getElementsByClassName("lightScroller")[0]?.removeEventListener("scroll", handSwipe)
     }, [index])
 
     return (<>
@@ -53,30 +54,37 @@ export default function Lightbox({ items, index, setIndex }) {
             </div>
             <div className={style.lightScroller}>
                 {items.map((post, i) => (
-                    <div key={`lb_${post.postId}`} className={`${style.lightboxContent} ${i == index ? "activeImg" : ""}`} style={{"--i": i}}>
-                        <div className={style.lightItem}>
-                            <img className={style.lightboxImg} src={post.uri}></img>
-                            {true ? <div className={style.postInfo}>
-                                <div className={style.postHeader}>
-                                    <h2>{post.title}</h2>
-                                    <p>{post.uploadDate?.split(" ")[0]}</p>
-                                </div>
-                            </div> : null}
-                            {false ? <div className={style.postInfo}>
-                                <div className={style.postHeader}>
-                                    <h2>{post.title}</h2>
-                                    <p>{post.uploadDate?.split(" ")[0]}</p>
-                                </div>
-                                <p>{post.description}</p>
-                                {post.collections?.length > 0 ? <div>
-                                    <PillBox editable={false} group={post.collections}></PillBox>
+                    <div key={`lb_${post.postId}`} className={`${style.lightboxContent} ${i == index ? "activeImg" : ""}`} style={{ "--i": i }}>
+                        <div className={`${style.lightItem} ${showInfo ? style.lightItemFlip : ""}`}>
+                            <div className={style.lightItemFront}>
+                                <img className={style.lightboxImg} src={post.uri}></img>
+                                {true ? <div className={style.postInfo}>
+                                    <div className={style.postHeader}>
+                                        <h2>{post.title}</h2>
+                                        <p>{post.uploadDate?.split(" ")[0]}</p>
+                                    </div>
                                 </div> : null}
-                                {post.tags?.length > 0 ? <div>
-                                    <PillBox editable={false} group={post.tags}></PillBox>
-                                </div> : null}
-                            </div> : null}
+
+                                <div className={style.lightItemBack}>
+                                    {true ? <div className={style.postInfo}>
+                                        <div className={style.postHeader}>
+                                            <h2>{post.title}</h2>
+                                            <p>{post.uploadDate?.split(" ")[0]}</p>
+                                        </div>
+                                        <p>{post.description}</p>
+                                        {post.collections?.length > 0 ? <div>
+                                            <PillBox editable={false} group={post.collections}></PillBox>
+                                        </div> : null}
+                                        {post.tags?.length > 0 ? <div>
+                                            <PillBox editable={false} group={post.tags}></PillBox>
+                                        </div> : null}
+
+                                    </div> : null}
+                                </div>
+                            </div>
                         </div>
                     </div>))}
+
             </div>
         </div> : null}
     </>)
