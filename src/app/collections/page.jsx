@@ -21,7 +21,7 @@ export default async function FeaturedCollections() {
 
     return (
     <>
-    <h3>Collections</h3>
+    <h3>Albums</h3>
     <CollectionGrid items={itemList}></CollectionGrid>
     </>)
 }

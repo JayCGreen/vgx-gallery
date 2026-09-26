@@ -16,7 +16,7 @@ export default function NavMenu(){
         },
         {
             route:"/collections",
-            label: "Collections"
+            label: "Albums"
         },
     ]
 
