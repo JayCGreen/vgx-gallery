@@ -61,7 +61,7 @@
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
 
-	perspective: 10000px;
+	perspective: 1000px;
 }
 
 .lightItem {
