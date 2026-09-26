@@ -27,7 +27,7 @@
 	width: 100%;
 	height: min-content;
 	display: flex;
-	justify-content: space-between;
+	justify-content: end;
 	align-items: center;
 	display: flex;
 	flex-direction: row;
@@ -61,7 +61,7 @@
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
 
-	perspective: 1000px;
+	perspective: 5000px;
 }
 
 .lightItem {
@@ -106,13 +106,13 @@
 
 .lightItemBack {
 	inset: 0;
-	transform: rotateY(180deg) translateZ(-1px);
+	transform: rotateY(180deg);
 	width: 100%;
 }
 
 .lightItemFlip {
 	transform: rotateY(180deg);
-
+	
 }
 
 .postInfo {

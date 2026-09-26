@@ -2,11 +2,12 @@
 import { useState, useEffect } from "react"
 import style from "./lightbox.module.css"
 import PillBox from "../pillbox";
+import { X } from "@deemlol/next-icons";
 
 
 export default function Lightbox({ items, index, setIndex }) {
     //const [lightboxIndex, setIndex] = useState(index);
-    const [showInfo, setShowInfo] = useState(false)
+    const [showInfo, setShowInfo] = useState(-1)
     //const post = items[index]
     /*
     useEffect(()=>{
@@ -44,18 +45,12 @@ export default function Lightbox({ items, index, setIndex }) {
     return (<>
         {index != undefined ? <div className={style.lightbox}>
             <div className={style.topControls}>
-                <button onClick={() => setShowInfo(!showInfo)}> Info</button>
-                <div>
-                    <button className={style.lightboxControls} onClick={() => setIndex((((index - 1) % len) + len) % len)}>&#8896;</button>
-                    <button className={style.lightboxControls} onClick={() => setIndex((((index + 1) % len) + len) % len)}> &#8897;</button>
-                </div>
-                <button onClick={() => setIndex()}>Exit</button>
-
+                <button style={{borderRadius: 100, display: "flex", justifyContent: "center", padding: "2px"}}onClick={() => setIndex()}> <X /></button>
             </div>
             <div className={style.lightScroller}>
                 {items.map((post, i) => (
                     <div key={`lb_${post.postId}`} className={`${style.lightboxContent} ${i == index ? "activeImg" : ""}`} style={{ "--i": i }}>
-                        <div className={`${style.lightItem} ${showInfo ? style.lightItemFlip : ""}`}>
+                        <div className={`${style.lightItem} ${showInfo == i ? style.lightItemFlip : ""}`}>
                             <div className={style.lightItemFront}>
                                 <img className={style.lightboxImg} src={post.uri}></img>
                                 {true ? <div className={style.postInfo}>
@@ -63,10 +58,11 @@ export default function Lightbox({ items, index, setIndex }) {
                                         <h2>{post.title}</h2>
                                         <p>{post.uploadDate?.split(" ")[0]}</p>
                                     </div>
+                                    <button onClick={() => setShowInfo(showInfo == i ? -1 : i)}>Info</button>
                                 </div> : null}
 
                                 <div className={style.lightItemBack}>
-                                    {true ? <div className={style.postInfo}>
+                                    <div className={style.postInfo}>
                                         <div className={style.postHeader}>
                                             <h2>{post.title}</h2>
                                             <p>{post.uploadDate?.split(" ")[0]}</p>
@@ -78,8 +74,9 @@ export default function Lightbox({ items, index, setIndex }) {
                                         {post.tags?.length > 0 ? <div>
                                             <PillBox editable={false} group={post.tags}></PillBox>
                                         </div> : null}
-
-                                    </div> : null}
+                                        <button onClick={() => setShowInfo(-1)}>Flip</button>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
