@@ -18,16 +18,18 @@
 	border: none;
 	text-decoration: none;
 	color: black;
+
 }
 
 .galleryItem img {
 	height: 100%;
 	object-fit: cover;
-	transition: ease 2s;
+
 }
 
 .galleryItem:hover img {
-	object-fit: contain;
+
+	transition: ease .5s;
 }
 
 @media screen and (max-width: 600px) {

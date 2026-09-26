@@ -5,7 +5,7 @@
 	height: 100%;
 	position: fixed;
 	display: flex;
-	z-index: 22;
+	z-index: 30;
 	flex-direction: column;
 	background-color: rgba(15, 15, 15, 75%);
 	align-items: center;
@@ -13,14 +13,16 @@
 	box-sizing: border-box;
 
 }
-.lightScroller{
+
+.lightScroller {
 	height: 100%;
-	width:100%;
+	width: 100%;
 	overflow-y: scroll;
 	overscroll-behavior: contain;
 	scroll-snap-type: y mandatory;
-	
+	flex-direction: column;
 }
+
 .topControls {
 	width: 100%;
 	height: min-content;
@@ -28,7 +30,7 @@
 	justify-content: space-between;
 	align-items: center;
 	display: flex;
-	flex-direction:row;
+	flex-direction: row;
 }
 
 
@@ -45,13 +47,13 @@
 	min-height: 0;
 	box-sizing: border-box;
 	object-fit: contain;
-	background-color: #222;
+	background-color: #fff;
 }
 
 .lightboxContent {
 	height: 100%;
 	width: 100%;
-
+	padding: 2%;
 	box-sizing: border-box;
 	justify-content: center;
 	align-items: center;
@@ -60,27 +62,37 @@
 	scroll-snap-stop: always;
 }
 
-.lightItem{
+.lightItem {
 	height: 100%;
-	width: 100%;
+	min-width: 0;
+	max-width: 100%;
+	background: #fff;
 	padding: 1%;
 	box-sizing: border-box;
 	justify-content: center;
 	display: flex;
+	flex-direction: column;
+
 }
 
 .postInfo {
-	background: #fff;
+
 	max-width: 100%;
-	padding: 5%;
-	border-radius: 0 15px 15px 0;
+	padding: 1%;
 	box-sizing: border-box;
+	font-family: 'Indie Flower', cursive;
 }
 
 
 @media screen and (max-width: 600px) {
 	.lightItem {
 		flex-direction: column;
+		min-width: unset;
+		max-width: unset;
+		height: unset;
+		width: 100%;
+		max-height: 100%;
+		min-height: 0;
 	}
 
 	.postInfo {

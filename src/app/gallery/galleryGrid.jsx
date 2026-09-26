@@ -9,7 +9,6 @@ import style from "./galleryGrid.module.css";
 export default async function GalleryGrid({ searchParams }) {
     const filters = (await searchParams);
     const pageSize = 5;
-
     const { env } = await getCloudflareContext({ async: true });
     var postList = (await env.vgx_feed.prepare(
         filterPosts(filters)

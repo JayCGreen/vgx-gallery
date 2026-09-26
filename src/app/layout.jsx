@@ -28,6 +28,11 @@ export default async function RootLayout({ children }) {
     console.log(cookieJar.get("accessAge"))
 
     return (<html>
+        <head>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+        </head>
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -35,9 +40,11 @@ export default async function RootLayout({ children }) {
                 {cookieJar.get("accessAge")?.value == '2' ?
 
                     <>
-                        <Header></Header>
+                        <Header>
+                           
+                        </Header>
                         <div className="pageContent">
-                        {children}
+                            {children}
                         </div>
                     </>
                     : <AgeGate></AgeGate>}

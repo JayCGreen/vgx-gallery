@@ -5,9 +5,10 @@ import style from "./galleryGrid.module.css";
 
 export default function GridComponent({ items }) {
     const [gallIndex, setIndex] = useState();
-
+    
     return (
         <>
+        
             {items.map((media, index) => {
                 if (!media) return;
                 return (

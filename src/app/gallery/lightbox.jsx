@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from "react"
 import style from "./lightbox.module.css"
-import PillBox from "../pillbox"
+import PillBox from "../pillbox";
+
 
 export default function Lightbox({ items, index, setIndex }) {
     //const [lightboxIndex, setIndex] = useState(index);
@@ -23,6 +24,19 @@ export default function Lightbox({ items, index, setIndex }) {
         console.log("hey am I seen")
         window.addEventListener("scrollend", handSwipe)
         document.getElementsByClassName("activeImg")[0]?.scrollIntoView();
+        /*
+        const ctx = document.getElementById("canvasTest")?.getContext("2d");
+        const img = new Image();
+        img.src = items[index]?.uri
+        
+        img.addEventListener("load", () => {
+            if (ctx) {
+            ctx.drawImage(img, 0, 0)
+            ctx.scale(.5, .5)
+            console.log("in the drawer", img, ctx)
+        }
+        });
+        */
         return () => window.removeEventListener("scrollend", handSwipe)
     }, [index])
 
@@ -39,10 +53,16 @@ export default function Lightbox({ items, index, setIndex }) {
             </div>
             <div className={style.lightScroller}>
                 {items.map((post, i) => (
-                    <div key={`lb_${post.postId}`} className={`${style.lightboxContent} ${i == index ? "activeImg" : ""}`}>
+                    <div key={`lb_${post.postId}`} className={`${style.lightboxContent} ${i == index ? "activeImg" : ""}`} style={{"--i": i}}>
                         <div className={style.lightItem}>
                             <img className={style.lightboxImg} src={post.uri}></img>
-                            {showInfo ? <div className={style.postInfo}>
+                            {true ? <div className={style.postInfo}>
+                                <div className={style.postHeader}>
+                                    <h2>{post.title}</h2>
+                                    <p>{post.uploadDate?.split(" ")[0]}</p>
+                                </div>
+                            </div> : null}
+                            {false ? <div className={style.postInfo}>
                                 <div className={style.postHeader}>
                                     <h2>{post.title}</h2>
                                     <p>{post.uploadDate?.split(" ")[0]}</p>
