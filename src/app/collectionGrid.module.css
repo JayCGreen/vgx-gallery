@@ -6,23 +6,20 @@
 	gap: 15%;
 	flex-direction: column;
 	list-style-type: none;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.collectionsList li{
+.collectionsList li {
 	width: 100%;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 
-
-	min-height: 20vh;
-
 }
 
 .collectionItem {
-	text-decoration:none;
-	color:black;
+	text-decoration: none;
+	color: black;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -32,28 +29,47 @@
 
 
 
-.collectionCover{
-	width:100%;
-	display:flex;
-
+.collectionCover {
+	width: 100%;
+	display: flex;
+	padding: 3%;
+	box-sizing: border-box;
 }
 
-.collectionImage{
+.collectionImage {
 	width: 100%;
+	aspect-ratio: 1;
 	min-height: 0;
 	object-fit: cover;
 	object-position: 0 30%;
-	max-height: 6rem;
-	min-height:0;
+
 }
 
-.card{
+.card {
 	border: 1px solid;
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	inset: 0;
-	transform: translate(calc(var(--i) * 5px),calc(var(--i) * 6px));
+	transform: translate(calc((2 - var(--i)) * -5px), calc((2 - var(--i)) * -5px));
+	box-shadow: 2px 3px 3px;
 	background: #fff;
-	z-index:calc(var(--i)*-1)
+	z-index: calc(var(--i)*-1);
+	display: flex;
+	flex-direction: column;
+	transition: linear .2s;
+}
+
+.collectionItem:hover .card {
+	transform: translate(calc((2 - var(--i)) * -10px), calc(((2 - var(--i)) * -10px)));
+}
+
+.topCard {
+	position: relative;
+}
+
+@media screen and (max-width: 600px) {
+	.collectionsList {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 }

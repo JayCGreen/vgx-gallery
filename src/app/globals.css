@@ -1,6 +1,7 @@
 
 /* General CSS*/
 body {
+	--background: aliceblue;
 	background: var(--background);
 	color: var(--foreground);
 	font-family: Arial, Helvetica, sans-serif;
