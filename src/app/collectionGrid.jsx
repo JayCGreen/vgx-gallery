@@ -2,7 +2,7 @@
 import style from "./collectionGrid.module.css"
 
 export default async function CollectionGrid({ items }) {
-    var count = [1, 2, 3, 4];
+    var count = [1, 2];
 
     return (
         <>

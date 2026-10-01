@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import style from "./lightbox.module.css"
 import PillBox from "../pillbox";
-import { X } from "@deemlol/next-icons";
+import { X, Repeat } from "@deemlol/next-icons";
 
 
 export default function Lightbox({ items, index, setIndex }) {
@@ -58,7 +58,7 @@ export default function Lightbox({ items, index, setIndex }) {
                                         <h2>{post.title}</h2>
                                         <p>{post.uploadDate?.split(" ")[0]}</p>
                                     </div>
-                                    <button onClick={() => setShowInfo(showInfo == i ? -1 : i)}>Info</button>
+                                    <button onClick={() => setShowInfo(showInfo == i ? -1 : i)}><Repeat /></button>
                                 </div> : null}
 
                                 <div className={style.lightItemBack}>
@@ -74,7 +74,7 @@ export default function Lightbox({ items, index, setIndex }) {
                                         {post.tags?.length > 0 ? <div>
                                             <PillBox editable={false} group={post.tags}></PillBox>
                                         </div> : null}
-                                        <button onClick={() => setShowInfo(-1)}>Flip</button>
+                                        <button onClick={() => setShowInfo(-1)}><Repeat /></button>
                                     </div>
                                     
                                 </div>

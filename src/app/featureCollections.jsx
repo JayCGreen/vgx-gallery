@@ -42,7 +42,7 @@ export default async function FeaturedCollections() {
 
     return (
         <>
-            <h3>Albums</h3>
+            <h3 style={{textAlign:"center"}}>Albums</h3>
             <CollectionGrid items={itemList}></CollectionGrid>
 
         </>);
