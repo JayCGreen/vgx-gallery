@@ -6,7 +6,7 @@ body {
 	--offwhite: #d5f3d8;
 	--accent1: #cd6dbb;
 	--offblack: #213c28;
-	background: linear-gradient(to bottom, var(--background) 33%, var(--offwhite)) ;
+	background: linear-gradient(to bottom, var(--background) 5%, var(--offwhite)) ;
 	background-repeat: no-repeat;
     background-attachment: fixed;
 	color: var(--foreground);
@@ -19,7 +19,7 @@ body {
 
 .header {
 	width: 100%;
-	background: var(--background);
+	background: var(--offwhite);
 	position: sticky;
 	top: 0;
 	display:flex;
@@ -39,6 +39,11 @@ body {
 
 	
 }
+.header ul li{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
 
 .header hr{
 	margin: 0;
@@ -47,14 +52,17 @@ body {
 .link{
 	text-decoration: none;
 	color: var(--foreground);
-	
+	text-transform: uppercase;
+	text-align: center;
+	width: 100%;
 }
 
 .active{
 	color: var(--accent1);
 	background: var(--offwhite);
-	padding: 15%;
-	border-radius: 20px;
+	padding: 1%;
+	border-radius: 5px;
+	box-shadow: 3px 3px var(--accent1);
 	
 }
 

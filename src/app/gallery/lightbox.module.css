@@ -54,6 +54,7 @@
 	box-sizing: border-box;
 	object-fit: contain;
 	background-color: var(--offwhite);
+	
 }
 
 .lightboxContent {
