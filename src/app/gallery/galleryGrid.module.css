@@ -1,8 +1,24 @@
+.galleryContent{
+	display: flex;
+	flex-direction: column;
+	padding: 2%;
+}
+
+.galleryHeader{
+	display: flex;
+	flex-direction: column;
+}
+.galleryHeader h4, .galleryHeader h2{
+	margin: 0;
+}
+.galleryHeader h4{
+	color: var(--offblack2)
+}
 .galleryGrid {
 	display: grid;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 0.5%;
-	width: 77%;
+	gap: 1%;
+	width: 100%;
 	align-self:center;
 }
 
@@ -12,7 +28,7 @@
 	width: 100%;
 	aspect-ratio: 1;
 	box-sizing: border-box;
-	padding: 2%;
+	padding: unset;
 	height: 100%;
 	gap: 2%;
 	background: none;
@@ -36,7 +52,7 @@
 @media screen and (max-width: 600px) {
 	.galleryGrid {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 0.5%;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+
 	}
 }

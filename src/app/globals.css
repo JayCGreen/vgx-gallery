@@ -6,6 +6,7 @@ body {
 	--offwhite: #d5f3d8;
 	--accent1: #cd6dbb;
 	--offblack: #213c28;
+	--offblack2: #386846;
 	background:  var(--offwhite) ;
 	background-repeat: no-repeat;
     background-attachment: fixed;
