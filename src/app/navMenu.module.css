@@ -1,3 +1,4 @@
+
 .header {
 	width: 100%;
 	background: var(--background);
@@ -58,6 +59,18 @@
 	box-shadow: 3px 0 var(--accent1);
 	
 }
+
+.cover{
+	transition: height cubic-bezier(.4,0,.2,1) .2s, visibility 0s cubic-bezier(.4,0,.2,1) .25s;
+	overflow: hidden;
+	height: 0;
+	position: relative;
+}
+
+.showCover{
+	height: 15vh;
+}
+
 .collapse{
     display : none;
 }
@@ -65,7 +78,7 @@
 	list-style: none;
 	margin: unset;
 	padding: unset;
-	transition: linear 1s;
+	
  }
 
   .mobileMenu li{
