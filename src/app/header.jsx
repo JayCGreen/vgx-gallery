@@ -2,7 +2,7 @@
 "use client"
 import NavMenu from "./navMenu";
 import style from "./navMenu.module.css";
-import { Menu } from "@deemlol/next-icons";
+import {X,  Menu } from "@deemlol/next-icons";
 import { useState } from "react";
 
 export default function Header() {
@@ -21,7 +21,9 @@ export default function Header() {
             <div className={`${style.cover} ${!collapseMenu? style.showCover : ""}`}>
             <NavMenu collapse={collapseMenu} mobileMenu={true} setCollapse={setCollapseMenu}></NavMenu>
             </div>
-            <button className={`${style.thumbButton} ${!collapseMenu ? style.thumbButtonActive : ""}`} onClick={() => setCollapseMenu(!collapseMenu)}><Menu /><span>Nav</span></button>
+            <button className={`${style.thumbButton} ${!collapseMenu ? style.thumbButtonActive : ""}`} onClick={() => setCollapseMenu(!collapseMenu)}>
+                {collapseMenu ?
+                <><Menu /><span>Nav</span></> : <X />}</button>
         </div>
     </div>)
 }

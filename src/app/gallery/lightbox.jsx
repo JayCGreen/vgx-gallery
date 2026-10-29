@@ -44,9 +44,7 @@ export default function Lightbox({ items, index, setIndex }) {
 
     return (<>
         {index != undefined ? <div className={style.lightbox}>
-            <div className={style.topControls}>
-                <button style={{borderRadius: 100, display: "flex", justifyContent: "center", padding: "2px"}}onClick={() => setIndex()}> <X /></button>
-            </div>
+
             <div className={style.lightScroller}>
                 {items.map((post, i) => (
                     <div key={`lb_${post.postId}`} className={`${style.lightboxContent} ${i == index ? "activeImg" : ""}`} style={{ "--i": i }}>
@@ -58,7 +56,11 @@ export default function Lightbox({ items, index, setIndex }) {
                                         <h2>{post.title}</h2>
                                         <p>{post.uploadDate?.split(" ")[0]}</p>
                                     </div>
-                                    <button onClick={() => setShowInfo(showInfo == i ? -1 : i)}><Repeat /></button>
+                                    <div style={{ width: "100%", display: "flex", gap: "2%" }}>
+                                        <button style={{ width: "100%" }} onClick={() => setShowInfo(showInfo == i ? -1 : i)}><Repeat /></button>
+                                        <button style={{ borderRadius: 100, display: "flex", justifyContent: "center", padding: "2px" }} onClick={() => setIndex()}> <X /></button>
+                                    </div>
+
                                 </div> : null}
 
                                 <div className={style.lightItemBack}>
@@ -74,9 +76,12 @@ export default function Lightbox({ items, index, setIndex }) {
                                         {post.tags?.length > 0 ? <div>
                                             <PillBox editable={false} group={post.tags}></PillBox>
                                         </div> : null}
-                                        <button onClick={() => setShowInfo(-1)}><Repeat /></button>
+                                        <div style={{ width: "100%", display: "flex", gap: "2%" }}>
+                                            <button style={{ width: "100%" }} onClick={() => setShowInfo(showInfo == i ? -1 : i)}><Repeat /></button>
+                                            <button style={{ borderRadius: 100, display: "flex", justifyContent: "center", padding: "2px" }} onClick={() => setIndex()}> <X /></button>
+                                        </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
