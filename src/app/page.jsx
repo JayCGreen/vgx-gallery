@@ -1,7 +1,7 @@
 import Recents from "./recentPosts";
 import FeatureCollections from "./featureCollections";
 import HeroBanner from "./heroBanner";
-
+import { ArrowRightBigDash } from "@deemlol/next-icons";
 
 export default function Landing() {
     const routes = [
@@ -23,12 +23,12 @@ export default function Landing() {
     ]
     return (
         <div>
-            <h3 style={{width:"100%", textAlign: "center"}}> - Main Menu - </h3>
+            <h3 style={{width:"100%", textAlign: "center", color: "var(--background)"}}> - Main Menu - </h3>
             <ul className="mainMenu">
                 {routes.map((el) => (
                     <li key={el.route} className="mainMenuItem">
-                        <a href={el.route}>
-                            <h3><strong>{el.label}</strong></h3>
+                        <a href={el.route} style={{whiteSpace: "pre", color: "var(--background)"}}>
+                            <h3 style={{color: "var(--accent2)", display: "flex", alignItems: "center", gap: "1%"}}><ArrowRightBigDash /> <strong>{el.label}</strong></h3>
                             <p style={{whiteSpace: "pre"}} className="menuItemDesc">
                                 {"\t"+el.desc}
                             </p>

@@ -51,11 +51,15 @@ export default function Lightbox({ items, index, setIndex }) {
                         <div className={`${style.lightItem} ${showInfo == i ? style.lightItemFlip : ""}`}>
                             <div className={style.lightItemFront}>
                                 <img className={style.lightboxImg} src={post.uri}></img>
-                                {true ? <div className={style.postInfo}>
+                                {true ? 
+                                
+                                <div className={style.postInfo}>
+                                    {/*
                                     <div className={style.postHeader}>
                                         <h2>{post.title}</h2>
                                         <p>{post.uploadDate?.split(" ")[0]}</p>
                                     </div>
+                                    */}
                                     <div style={{ width: "100%", display: "flex", gap: "2%" }}>
                                         <button style={{ width: "100%" }} onClick={() => setShowInfo(showInfo == i ? -1 : i)}><Repeat /></button>
                                         <button style={{ borderRadius: 100, display: "flex", justifyContent: "center", padding: "2px" }} onClick={() => setIndex()}> <X /></button>

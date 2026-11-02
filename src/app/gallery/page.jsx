@@ -10,10 +10,10 @@ export default async function Gallery({ searchParams }) {
     ).bind(filters.c || "-1").run()).results;
     return (<div className={style.galleryContent}>
         <div className={style.galleryHeader} >
-        <h2 style={{ color: "var(--offblack)" }}>{collection.length > 0 ? collection[0].collectionDisplay : "All"}</h2>
+        <h2 style={{ color: "var(--background)" }}>{collection.length > 0 ? collection[0].collectionDisplay : "All"}</h2>
         <h4>Gallery</h4>
         </div>
-        <hr style={{color: "var(--accent1)"}}/>
+
         <GalleryGrid searchParams={filters}></GalleryGrid>
     </div>)
 }

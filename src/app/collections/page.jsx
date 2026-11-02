@@ -27,7 +27,7 @@ export default async function FeaturedCollections() {
 
     return (
     <>
-    <h3>Albums</h3>
+    <h3 style={{color: "var(--background)"}}>Albums</h3>
     <CollectionGrid items={itemList}></CollectionGrid>
     </>)
 }

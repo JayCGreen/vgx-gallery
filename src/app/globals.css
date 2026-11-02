@@ -5,9 +5,10 @@ body {
 	--foreground: #213c28;
 	--offwhite: #d5f3d8;
 	--accent1: #cd6dbb;
+	--accent2: #cd90bb;
 	--offblack: #213c28;
 	--offblack2: #386846;
-	background:  var(--offwhite) ;
+	background:  var(--offblack) ;
 	background-repeat: no-repeat;
     background-attachment: fixed;
 	color: var(--foreground);
@@ -53,6 +54,7 @@ body {
 	align-content: center;
 	justify-content: center;
 	padding: 5% 0;
+	
 }
 
 .ageBlocker {
@@ -64,5 +66,7 @@ body {
 	gap: .5rem;
 	align-self: center;
 	justify-self:center;
+	background-color: var(--offwhite);
+	border-radius: 1rem;
 }
 
