@@ -1,7 +1,7 @@
 import Recents from "./recentPosts";
 import FeatureCollections from "./featureCollections";
 import HeroBanner from "./heroBanner";
-import { ArrowRightBigDash } from "@deemlol/next-icons";
+import { ArrowRightBigDash, Book, Image, MessageCircle } from "@deemlol/next-icons";
 
 export default function Landing() {
     const routes = [
@@ -21,21 +21,34 @@ export default function Landing() {
             desc: "See recent news regarding Vndergraphx"
         }
     ]
+    function iconGrabber(button) {
+        switch (button) {
+            case "Gallery":
+                return (<Image />)
+            case "Albums":
+                return (<Book />)
+            case "News":
+                return (<MessageCircle />)
+        }
+    }
     return (
-        <div>
-            <h3 style={{width:"100%", textAlign: "center", color: "var(--background)"}}> - Main Menu - </h3>
+        <main>
+            <h3 style={{ width: "100%", textAlign: "center", color: "var(--background)" }}> - Main Menu - </h3>
             <ul className="mainMenu">
                 {routes.map((el) => (
                     <li key={el.route} className="mainMenuItem">
-                        <a href={el.route} style={{whiteSpace: "pre", color: "var(--background)"}}>
-                            <h3 style={{color: "var(--accent2)", display: "flex", alignItems: "center", gap: "1%"}}><ArrowRightBigDash /> <strong>{el.label}</strong></h3>
-                            <p style={{whiteSpace: "pre"}} className="menuItemDesc">
-                                {"\t"+el.desc}
-                            </p>
+                        <a href={el.route} style={{ whiteSpace: "pre", color: "var(--background)", display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+                            <div>
+                                <h3 style={{ color: "var(--accent2)", display: "flex", alignItems: "center", gap: "1%" }}>{iconGrabber(el.label)} <strong>{el.label}</strong></h3>
+                                <p style={{ whiteSpace: "pre" }} className="menuItemDesc">
+                                    {"\t" + el.desc}
+                                </p>
+                            </div>
+                            <ArrowRightBigDash />
                         </a>
                     </li>
                 ))}
             </ul>
-        </div>
+        </main>
     )
 }

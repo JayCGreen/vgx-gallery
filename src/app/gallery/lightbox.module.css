@@ -145,9 +145,9 @@
 }
 
 .postInfo button{
-	border: var(--accent1) 2px solid;
+	border: var(--offblack) 2px solid;
 	border-radius: 50px;
-	background: var(--accent1);
+	background: var(--offblack);
 	color: var(--offwhite);
 	display: flex;
 	align-items: center;

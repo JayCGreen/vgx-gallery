@@ -1,6 +1,6 @@
 .header {
 	width: 100%;
-	background: var(--background);
+	background: var(--offblack);
 	position: sticky;
 	top: 0;
 	display: flex;
@@ -8,6 +8,16 @@
 	align-items: end;
 	padding: 0 2%;
 	box-sizing: border-box;
+	
+}
+
+.header h2{
+	color: var(--primary2);
+}
+.header img{
+	background: var(--background);
+	border-radius: 20rem;
+	padding: 2%;
 }
 
 .header hr {
@@ -144,6 +154,10 @@
 @media screen and (max-width: 600px) {
 	.header ul {
 		display: none;
+	}
+	.header{
+		justify-content: center;
+		padding: 2%;
 	}
 
 	.collapseButton {

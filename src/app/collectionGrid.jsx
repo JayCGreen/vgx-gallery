@@ -5,7 +5,7 @@ export default async function CollectionGrid({ items }) {
     var count = [1, 2];
 
     return (
-        <>
+        <section>
             <ul className={style.collectionsList}>
                 {items.map((el) => (
                     <li key={`collection${el.collectionId}`} className={style.collectionItemContainer} >
@@ -23,5 +23,5 @@ export default async function CollectionGrid({ items }) {
                     </li>
                 ))}
             </ul>
-        </>)
+        </section>)
 }

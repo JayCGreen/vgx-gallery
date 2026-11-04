@@ -31,9 +31,9 @@ export default async function GalleryGrid({ searchParams }) {
 
     transform();
     return (
-        <div className={style.galleryGrid}>
+        <section className={style.galleryGrid}>
             <GridComponent items={galleryItems}></GridComponent>
-        </div>)
+        </section>)
 
     function filterPosts(filter) {
         var query = "SELECT * FROM Posts ";

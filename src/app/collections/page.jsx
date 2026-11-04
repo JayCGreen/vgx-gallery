@@ -4,13 +4,13 @@ import CollectionGrid from "../collectionGrid";
 
 export default async function FeaturedCollections() {
     //Get 3 Collections, will sort out how we get them another time
-        const { env } = await getCloudflareContext({ async: true });
+    const { env } = await getCloudflareContext({ async: true });
     const collections = (await env.vgx_feed.prepare(
         "SELECT * FROM Collections"
     ).run()).results;
     console.log("colllection be", collections);
 
-        var itemList = await Promise.all(collections.map(async (el) => {
+    var itemList = await Promise.all(collections.map(async (el) => {
         var imgSource;
         const mediaList = (await env.vgx_feed.prepare(
             "SELECT * FROM CollectionPosts JOIN Posts ON CollectionPosts.post = Posts.postId WHERE CollectionPosts.collection = ? "
@@ -22,12 +22,12 @@ export default async function FeaturedCollections() {
             imgSource = `data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`;
         }
 
-        return {...el, source: imgSource}
+        return { ...el, source: imgSource }
     }))
 
     return (
-    <>
-    <h3 style={{color: "var(--background)"}}>Albums</h3>
-    <CollectionGrid items={itemList}></CollectionGrid>
-    </>)
+        <main>
+            <h3 style={{ color: "var(--background)" }}>Albums</h3>
+            <CollectionGrid items={itemList}></CollectionGrid>
+        </main>)
 }
