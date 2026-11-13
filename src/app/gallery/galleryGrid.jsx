@@ -31,7 +31,7 @@ export default async function GalleryGrid({ searchParams }) {
 
     transform();
     return (
-        <section className={style.galleryGrid}>
+        <section className={style.gallery}>
             <GridComponent items={galleryItems}></GridComponent>
         </section>)
 

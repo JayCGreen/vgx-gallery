@@ -9,12 +9,12 @@ body {
 	--accent2: #cd90bb;
 	--offblack: #213c28;
 	--offblack2: #386846;
-	background:  var(--offblack) ;
+
 	background-repeat: no-repeat;
     background-attachment: fixed;
-	color: var(--foreground);
+
 	font-family: Arial, Helvetica, sans-serif;
-	padding:0;
+	padding: 2%;
 	margin: 0;
 	height: 100%;
 	display: flex;

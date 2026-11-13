@@ -14,10 +14,6 @@ export default function NavMenu({collapse, mobileMenu}){
             route:"/gallery",
             label: "Gallery"
         },
-        {
-            route:"/collections",
-            label: "Albums"
-        },
     ]
 
     return (<ul className={`${collapse ? style.collapse : ""} ${mobileMenu? style.mobileMenu : style.headerMenu}`}>

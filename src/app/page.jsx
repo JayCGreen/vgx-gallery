@@ -8,12 +8,7 @@ export default function Landing() {
         {
             route: "/gallery",
             label: "Gallery",
-            desc: "Browse Works"
-        },
-        {
-            route: "/collections",
-            label: "Albums",
-            desc: "Browse Categories"
+            desc: "Browse All"
         },
         {
             route: "/",
@@ -31,13 +26,27 @@ export default function Landing() {
                 return (<MessageCircle />)
         }
     }
+    var testResults = ["test1", "test2", "test3"]
+
+
+
     return (
         <main>
             <h3 style={{ width: "100%", textAlign: "center", color: "var(--background)" }}> - Main Menu - </h3>
+            <div>
+                <input type="search" list="test"></input>
+                <button>Search</button>
+                <datalist id="test">
+                    {testResults.map((el) => (
+                        <option value={el} />
+                    ))}
+                </datalist>
+            </div>
+
             <ul className="mainMenu">
                 {routes.map((el) => (
                     <li key={el.route} className="mainMenuItem">
-                        <a href={el.route} style={{ whiteSpace: "pre", color: "var(--background)", display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+                        <a href={el.route} style={{ whiteSpace: "pre", color: "var(--background)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                             <div>
                                 <h3 style={{ color: "var(--accent2)", display: "flex", alignItems: "center", gap: "1%" }}>{iconGrabber(el.label)} <strong>{el.label}</strong></h3>
                                 <p style={{ whiteSpace: "pre" }} className="menuItemDesc">

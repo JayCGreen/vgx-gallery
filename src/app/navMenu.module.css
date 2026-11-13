@@ -1,6 +1,6 @@
 .header {
 	width: 100%;
-	background: var(--offblack);
+
 	position: sticky;
 	top: 0;
 	display: flex;
@@ -15,9 +15,7 @@
 	color: var(--primary2);
 }
 .header img{
-	background: var(--background);
-	border-radius: 20rem;
-	padding: 2%;
+
 }
 
 .header hr {
@@ -29,10 +27,9 @@
 	width: 100%;
 	justify-content: space-evenly;
 	list-style: none;
-	padding: 1% 3% 0 3%;
 	box-sizing: border-box;
 	margin: unset;
-	align-items: flex-end;
+	align-items: center;
 
 }
 
@@ -66,7 +63,7 @@
 	color: var(--accent1);
 	background: var(--offwhite);
 
-	border-radius: 5px 5px 0 0;
+	border-radius: 20rem;
 	box-shadow: 3px 0 var(--accent1);
 
 }
@@ -131,7 +128,7 @@
 
 
 .thumbButton {
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	width: 100%;
@@ -162,5 +159,8 @@
 
 	.collapseButton {
 		display: none;
+	}
+	.thumbButton{
+		display:flex;
 	}
 }
