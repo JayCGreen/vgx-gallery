@@ -19,6 +19,15 @@ export async function addPost(formData) {
         console.log("file formData looks like ", formData.get("createdDate"), formData)
         if (formData.get("postKey") == "X-Mas") {
             const { env } = getCloudflareContext()
+            //Media Handling
+            if (formData.get("postFile").size > 0) {
+                //Insert file into R2
+                const r2 = env.vgx_r2;
+                r2.put(formData.get("postFile").name, formData.get("postFile"))
+            }
+            else{
+                throw new Error("No File / Unable to upload File")
+            }
             const db = env.vgx_feed;
             //Insert post into table
             var post = await db.prepare("INSERT INTO Posts (title, description, r2Id, contentType,  uploadDate, createdDate, active) VALUES (?, ?, ?, ?, datetime('now','localtime'), ?,  1) RETURNING *")
@@ -31,12 +40,7 @@ export async function addPost(formData) {
 
                 ).run();
             var postId = post.results[0].postId
-            //Media Handling
-            if (formData.get("postFile").size > 0) {
-                //Insert file into R2
-                const r2 = env.vgx_r2;
-                r2.put(formData.get("postFile").name, formData.get("postFile"))
-            }
+            
             //Insert tag and collection relationships
             var tagList = formData.getAll("postTags")
             var tagArr = tagList[tagList.length - 1].split(",");

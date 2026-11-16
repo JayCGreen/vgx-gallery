@@ -7,32 +7,9 @@ import GridComponent from "./gridComponent";
 import style from "./galleryGrid.module.css";
 
 export default async function GalleryGrid({ searchParams }) {
-    const filters = (await searchParams);
-    const pageSize = 5;
-    const { env } = await getCloudflareContext({ async: true });
-    var postList = (await env.vgx_feed.prepare(
-        filterPosts(filters)
-    ).run()).results;
-    var collectionList = (await env.vgx_feed.prepare(
-        "Select * from CollectionPosts JOIN Collections ON Collections.collectionId = CollectionPosts.collection"
-    ).run()).results;
-    var tagList = (await env.vgx_feed.prepare(
-        "Select * from PostTags JOIN Tags ON Tags.tagId = PostTags.tag"
-    ).run()).results;
-    //grab the appropriate Collection info
-    
-    const galleryItems = await Promise.all(postList.map(async (el) => {
-        var mediaUrl = await env.vgx_r2?.get(el.r2Id);
-        var contentType = mediaUrl.httpMetadata.contentType;
-        var uri = await mediaUrl.arrayBuffer();
-        var source = `data:${contentType};base64, ${Buffer.from(uri).toString('base64')}`
-        return { ...el, uri: source };
-    }))
-
-    transform();
     return (
         <section className={style.gallery}>
-            <GridComponent items={galleryItems}></GridComponent>
+            <GridComponent></GridComponent>
         </section>)
 
     function filterPosts(filter) {

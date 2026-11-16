@@ -50,7 +50,7 @@ export default function Lightbox({ items, index, setIndex }) {
                     <div key={`lb_${post.postId}`} className={`${style.lightboxContent} ${i == index ? "activeImg" : ""}`} style={{ "--i": i }}>
                         <div className={`${style.lightItem} ${showInfo == i ? style.lightItemFlip : ""}`}>
                             <div className={style.lightItemFront}>
-                                <img className={style.lightboxImg} src={post.uri}></img>
+                                <img className={style.lightboxImg} src={post.source}></img>
                                 {true ? 
                                 
                                 <div className={style.postInfo}>
