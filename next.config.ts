@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 module.exports = {
   experimental: {
     serverActions: {
-      bodySizeLImit: '3mb'
+      bodySizeLimit: '3mb',
     },
   },
 }
