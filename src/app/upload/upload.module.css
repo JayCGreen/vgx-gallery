@@ -3,6 +3,7 @@
 	width: 100%;
 	align-items: center;
 	flex-direction: column;
+	
 }
 
 .uploadPage input,
@@ -30,7 +31,14 @@
 	gap: 4%;
 	height: 100%;
 	align-self: center;
-	width: 66%;
+	width: 100%;
+}
+
+.uploadFileSection{
+	display:flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
 }
 
 .groupDataInput {

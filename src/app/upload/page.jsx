@@ -48,7 +48,7 @@ export default function Uploader() {
     return (
         <div className={style.uploadPage}>
             <form className={style.uploadForm} action={addPost}>
-                <div>
+                <div className={style.uploadFileSection}>
                 <input name="postFile" type="file" onChange={(el)=>{
                     setPreview(URL.createObjectURL(el.target.files[0]))
                 }}></input>
