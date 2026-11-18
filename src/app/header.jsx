@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function Header() {
     const [collapseMenu, setCollapseMenu] = useState(true);
-    return (<div>
+    return (<div style={{ alignSelf: "center", display: "flex", justifyContent: "center" }}>
         <div className={style.header}>
             <div style={{ alignSelf: "center", display: "flex", alignItems: "center" }}>
                 <a href="/" className={style.link} style={{ width: "100%", display: "flex", alignItems: "center", textDecoration: "none", justifyContent: "center" }}>

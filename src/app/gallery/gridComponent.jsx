@@ -44,16 +44,17 @@ export default function GridComponent() {
 
         var gallerySection = document.getElementById("gallerySection")
         gallerySection.addEventListener("scrollend", handleScroll)
-        gallerySection.addEventListener("touchstart", handleScroll)
 
         //handleScroll()
 
         function handleScroll() {
-            if ((pageIndex <= pageCap) && Math.abs(gallerySection.scrollHeight - gallerySection.clientHeight - gallerySection.scrollTop) <= (0.5)) {
+            if ((pageIndex <=pageCap) && Math.abs(gallerySection.scrollHeight - gallerySection.clientHeight - gallerySection.scrollTop) <= (1)) {
                 setPageIndex(pageIndex + 1);
+                console.log("oi see me me at the end")
             }
+            console.log("oi see me me")
         }
-        return () => { gallerySection.removeEventListener("scrollend", handleScroll); gallerySection.removeEventListener("touchstart", handleScroll); }
+        return () => { gallerySection.removeEventListener("scrollend", handleScroll); }
     }, [pageIndex])
 
     /*
