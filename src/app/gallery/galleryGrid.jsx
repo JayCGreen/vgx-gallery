@@ -8,7 +8,7 @@ import style from "./galleryGrid.module.css";
 
 export default async function GalleryGrid({ searchParams }) {
     return (
-        <section className={style.gallery}>
+        <section id="gallerySection" className={style.gallery}>
             <GridComponent></GridComponent>
         </section>)
 

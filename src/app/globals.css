@@ -16,9 +16,11 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	padding: 2%;
 	margin: 0;
-	height: 100%;
+	height: 100vh;
+	box-sizing: border-box;
 	display: flex;
 	padding-bottom: 10vh; 
+	
 }
 
 .mainMenu{
@@ -40,6 +42,7 @@ body {
 	padding: 8;
 	width: 100%;
 	box-sizing: border-box;
+	height: 100%;
 }
 
 .content {

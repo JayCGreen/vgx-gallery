@@ -1,20 +1,27 @@
 'use client'
 import Lightbox from "./lightbox";
 import { useState, useEffect } from "react";
-import {useSearchParams} from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import style from "./galleryGrid.module.css";
+import Image from 'next/image'
 
 export default function GridComponent() {
     const searchParams = useSearchParams();
     const [gallIndex, setIndex] = useState();
     const [gallery, setGallery] = useState([]);
+    const [pageIndex, setPageIndex] = useState(0);
+    const [pageCap, setPageCap] = useState(99);
     const [groupedGallery, setGroupedGallery] = useState({})
     const [isLoading, setIsLoading] = useState(true);
     var groupByYear = {};
     useEffect(() => {
         async function fetchData() {
             var items = await grabPieces();
-            var currVis = gallery.concat(items)
+            if(items){
+                setPageCap(pageCap + 1)
+            }
+            var currVis = gallery.concat(items);
+            
             setGallery(currVis)
 
             currVis.forEach((el) => {
@@ -34,27 +41,46 @@ export default function GridComponent() {
         fetchData().then(() => {
             setGroupedGallery(groupByYear)
         })
-    }, [])
+
+        var gallerySection = document.getElementById("gallerySection")
+        gallerySection.addEventListener("scrollend", handleScroll)
+        gallerySection.addEventListener("touchstart", handleScroll)
+
+        //handleScroll()
+
+        function handleScroll() {
+            if ((pageIndex <= pageCap) && Math.abs(gallerySection.scrollHeight - gallerySection.clientHeight - gallerySection.scrollTop) <= (0.5)) {
+                setPageIndex(pageIndex + 1);
+            }
+        }
+        return () => { gallerySection.removeEventListener("scrollend", handleScroll); gallerySection.removeEventListener("touchstart", handleScroll); }
+    }, [pageIndex])
+
+    /*
+    console.log("everything rerun?")
+    var gallerySection = document.getElementById("gallerySection") || null
+    if (gallerySection && Math.abs(gallerySection.scrollHeight - gallerySection.clientHeight - gallerySection.scrollTop) <= (0.5)) {
+        setPageIndex(pageIndex + 1)
+    }
+        */
     //Semi works for the laoding, still gotaa deal for the infinite load signals. Likely would be  a just dealing a state that acts as a switch... uea that should od
 
 
     async function grabPieces() {
-        var f = await fetch(`actions/posts?offset=0${searchParams.get("c") ? "&c="+ searchParams.get("c"): ""}`);
+        var f = await fetch(`actions/posts?limit=10&offset=${pageIndex * 10}${searchParams.get("c") ? "&c=" + searchParams.get("c") : ""}`);
         var dataList = await f.json();
-        console.log("this here", dataList);
         return Promise.all(dataList.posts.map(async (el) => {
             if (el.r2Id) {
                 var url = await fetch(`actions/media?id=${el.r2Id}`).then((res) => res.blob()).then((b) => URL.createObjectURL(b));
 
                 return { ...el, source: url }
             }
-
         }))
     }
 
     return (
         <>
-            {gallery.length > 0  ?
+            {gallery.length > 0 ?
                 Object.entries(groupedGallery).sort((a, b) => parseInt(b[0]) - parseInt(a[0])).map((itemList) =>
                 (<section key={`year${itemList[0]}`} style={{ width: "100%" }}>
                     <h4>{itemList[0]}</h4>
@@ -63,13 +89,13 @@ export default function GridComponent() {
                             if (!media) return;
                             return (
                                 <button onClick={() => setIndex(index)} key={`media${media.postId}`} className={style.galleryItem}>
-                                    <img className={style.galleryItem} src={media.source}></img>
+                                    <Image className={style.galleryItem} src={media.source} width={300} height={300} alt={"image"}></Image>
                                 </button>
                             )
 
                         })}
                     </div>
-                </section>)):
+                </section>)) :
                 <p>Loading...</p>
             }
             <Lightbox items={gallery} index={gallIndex} setIndex={setIndex}></Lightbox>

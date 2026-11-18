@@ -23,7 +23,7 @@ export async function addPost(formData) {
             if (formData.get("postFile").size > 0) {
                 //Insert file into R2
                 const r2 = env.vgx_r2;
-                r2.put(formData.get("postFile").name, formData.get("postFile"))
+                await r2.put(formData.get("postFile").name, formData.get("postFile"))
             }
             else{
                 throw new Error("No File / Unable to upload File")
