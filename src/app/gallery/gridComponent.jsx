@@ -88,7 +88,7 @@ export default function GridComponent() {
                         {itemList[1].map((media, index) => {
                             if (!media) return;
                             return (
-                                <button onClick={() => setIndex(index)} key={`media${media.postId}`} className={style.galleryItem}>
+                                <button onClick={() => setIndex(gallery.findIndex((el)=>el.postId==media.postId))} key={`media${media.postId}`} className={style.galleryItem}>
                                     <Image className={style.galleryItem} src={media.source} width={300} height={300} alt={"image"}></Image>
                                 </button>
                             )
