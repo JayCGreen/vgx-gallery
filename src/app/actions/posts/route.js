@@ -13,7 +13,7 @@ export async function GET(request) {
             query += `JOIN CollectionPosts ON CollectionPosts.post = Posts.postId WHERE CollectionPosts.collection=${c} `;
         }
         //something for the tags
-        query += `ORDER BY julianday(Posts.uploadDate) DESC`;
+        query += `ORDER BY julianday(Posts.createdDate) DESC`;
         if (limit && offset) {
             query += ` LIMIT ${limit} OFFSET ${offset}`
         }

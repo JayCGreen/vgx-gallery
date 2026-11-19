@@ -29,7 +29,7 @@ export default function GridComponent() {
                     return
                 }
                 //get the year,
-                var year = new Date(el.uploadDate).getFullYear();
+                var year = new Date(el.createdDate).getFullYear();
                 if (groupByYear[year]) {
                     groupByYear[year].push(el)
                 }
