@@ -71,7 +71,7 @@ export default function Lightbox({ items, index, setIndex }) {
                                     <div className={style.postInfo}>
                                         <div className={style.postHeader}>
                                             <h2>{post.title}</h2>
-                                            <p>{post.uploadDate?.split(" ")[0]}</p>
+                                            <p>{post.createdDate?.split(" ")[0]}</p>
                                         </div>
                                         <p>{post.description}</p>
                                         {post.collections?.length > 0 ? <div>
