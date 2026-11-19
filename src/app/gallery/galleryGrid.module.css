@@ -8,6 +8,7 @@
 .gallery{
 	height: 100%;
 	overflow-y:scroll;
+	padding-bottom: 5svh;
 }
 .galleryHeader{
 	display: flex;

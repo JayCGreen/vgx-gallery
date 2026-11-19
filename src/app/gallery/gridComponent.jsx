@@ -10,18 +10,22 @@ export default function GridComponent() {
     const [gallIndex, setIndex] = useState();
     const [gallery, setGallery] = useState([]);
     const [pageIndex, setPageIndex] = useState(0);
-    const [pageCap, setPageCap] = useState(99);
+    const [pageCap, setPageCap] = useState(0);
     const [groupedGallery, setGroupedGallery] = useState({})
     const [isLoading, setIsLoading] = useState(true);
+
+    const pageSize = 10;
     var groupByYear = {};
     useEffect(() => {
         async function fetchData() {
             var items = await grabPieces();
-            if(items){
+            console.log(items)
+            //10 being the amount I pull at once
+            if (items.length >= pageSize) {
                 setPageCap(pageCap + 1)
             }
             var currVis = gallery.concat(items);
-            
+
             setGallery(currVis)
 
             currVis.forEach((el) => {
@@ -48,7 +52,7 @@ export default function GridComponent() {
         //handleScroll()
 
         function handleScroll() {
-            if ((pageIndex <=pageCap) && Math.abs(gallerySection.scrollHeight - gallerySection.clientHeight - gallerySection.scrollTop) <= (1)) {
+            if ((pageIndex <= pageCap) && Math.abs(gallerySection.scrollHeight - gallerySection.clientHeight - gallerySection.scrollTop) <= (1)) {
                 setPageIndex(pageIndex + 1);
                 console.log("oi see me me at the end")
             }
@@ -56,6 +60,7 @@ export default function GridComponent() {
         }
         return () => { gallerySection.removeEventListener("scrollend", handleScroll); }
     }, [pageIndex])
+    console.log("pageinfo", pageIndex, pageCap)
 
     /*
     console.log("everything rerun?")
@@ -81,24 +86,24 @@ export default function GridComponent() {
 
     return (
         <>
-            {gallery.length > 0 ?
-                Object.entries(groupedGallery).sort((a, b) => parseInt(b[0]) - parseInt(a[0])).map((itemList) =>
-                (<section key={`year${itemList[0]}`} style={{ width: "100%" }}>
-                    <h4>{itemList[0]}</h4>
-                    <div className={style.galleryGrid}>
-                        {itemList[1].map((media, index) => {
-                            if (!media) return;
-                            return (
-                                <button onClick={() => setIndex(gallery.findIndex((el)=>el.postId==media.postId))} key={`media${media.postId}`} className={style.galleryItem}>
-                                    <Image className={style.galleryItem} src={media.source} width={300} height={300} alt={"image"}></Image>
-                                </button>
-                            )
 
-                        })}
-                    </div>
-                </section>)) :
-                <p>Loading...</p>
+            {Object.entries(groupedGallery).sort((a, b) => parseInt(b[0]) - parseInt(a[0])).map((itemList) =>
+            (<section key={`year${itemList[0]}`} style={{ width: "100%" }}>
+                <h4>{itemList[0]}</h4>
+                <div className={style.galleryGrid}>
+                    {itemList[1].map((media, index) => {
+                        if (!media) return;
+                        return (
+                            <button onClick={() => setIndex(gallery.findIndex((el) => el.postId == media.postId))} key={`media${media.postId}`} className={style.galleryItem}>
+                                <Image className={style.galleryItem} src={media.source} width={300} height={300} alt={"image"}></Image>
+                            </button>
+                        )
+
+                    })}
+                </div>
+            </section>))
             }
+            <p style={{ textAlign: 'center', width: "100%" }}>{pageIndex <= pageCap ? "Loading..." : "-End of Gallery-"}</p>
             <Lightbox items={gallery} index={gallIndex} setIndex={setIndex}></Lightbox>
         </>
     )
