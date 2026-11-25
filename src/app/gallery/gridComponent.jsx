@@ -50,8 +50,9 @@ export default function GridComponent() {
             setGroupedGallery(groupByYear)
         })
 
-        var gallerySection = document.documentElement
+        var gallerySection = document.body
         document.addEventListener("scrollend", handleScroll)
+        console.log("oi see this", gallerySection.scrollHeight, gallerySection.clientHeight, gallerySection.scrollTop)
 
         //handleScroll()
 
