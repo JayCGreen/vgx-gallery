@@ -47,7 +47,7 @@ export default function GridComponent() {
         })
 
         var gallerySection = document.getElementById("gallerySection")
-        gallerySection.addEventListener("scrollend", handleScroll)
+        document.addEventListener("scrollend", handleScroll)
 
         //handleScroll()
 
@@ -58,7 +58,7 @@ export default function GridComponent() {
             }
             console.log("oi see me me")
         }
-        return () => { gallerySection.removeEventListener("scrollend", handleScroll); }
+        return () => { document.removeEventListener("scrollend", handleScroll); }
     }, [pageIndex])
     console.log("pageinfo", pageIndex, pageCap)
 

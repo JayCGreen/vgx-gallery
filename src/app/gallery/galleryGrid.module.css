@@ -6,13 +6,18 @@
 	height: 100%;
 }
 .gallery{
-	height: 100%;
+	/*height: 100%;
 	overflow-y:scroll;
-	padding-bottom: 5svh;
+	padding-bottom: 5svh;*/
+	box-sizing: border-box;
 }
 .galleryHeader{
 	display: flex;
 	flex-direction: column;
+	position:sticky;
+	top: 0;
+	background: white;
+	padding: 0.5rem;
 }
 .galleryHeader h4, .galleryHeader h2{
 	margin: 0;

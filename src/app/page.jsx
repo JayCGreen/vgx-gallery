@@ -33,7 +33,8 @@ export default function Landing() {
     return (
         <main>
             <h3 style={{ width: "100%", textAlign: "center", color: "var(--background)" }}> - Main Menu - </h3>
-            <div>
+            
+            {/*<div>
                 <input type="search" list="test"></input>
                 <button>Search</button>
                 <datalist id="test">
@@ -42,6 +43,7 @@ export default function Landing() {
                     ))}
                 </datalist>
             </div>
+            */}
 
             <ul className="mainMenu">
                 {routes.map((el) => (
