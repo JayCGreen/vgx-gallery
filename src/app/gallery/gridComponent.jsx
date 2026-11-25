@@ -22,7 +22,11 @@ export default function GridComponent() {
             console.log(items)
             //10 being the amount I pull at once
             if (items.length >= pageSize) {
-                setPageCap(pageCap + 1)
+                setPageCap(pageCap + 1);
+
+            }
+            else{
+                setIsLoading(false);
             }
             var currVis = gallery.concat(items);
 
@@ -46,7 +50,7 @@ export default function GridComponent() {
             setGroupedGallery(groupByYear)
         })
 
-        var gallerySection = document.getElementById("gallerySection")
+        var gallerySection = document.documentElement
         document.addEventListener("scrollend", handleScroll)
 
         //handleScroll()
@@ -103,7 +107,7 @@ export default function GridComponent() {
                 </div>
             </section>))
             }
-            <p style={{ textAlign: 'center', width: "100%" }}>{pageIndex <= pageCap ? "Loading..." : "-End of Gallery-"}</p>
+            <p style={{ textAlign: 'center', width: "100%" }}>{isLoading ? "Loading..." : "-End of Gallery-"}</p>
             <Lightbox items={gallery} index={gallIndex} setIndex={setIndex}></Lightbox>
         </>
     )
